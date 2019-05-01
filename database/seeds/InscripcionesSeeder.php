@@ -18,5 +18,21 @@ class InscripcionesSeeder extends Seeder
             'user_id'=>'1',
             'actividades_id'=>'1',
         ]);
+
+        $user = DB::table('users')->select('id')->first();
+        $actividad = DB::table('actividades')->select('id')->first();
+
+        //dd($user, $actividad);
+
+        for($i=0;$i<10;$i++)
+        {
+            DB::table('inscripciones')->insert([
+            'fecha_inscripcion'=> $fechaactual,
+            'user_id'=>$user->id,
+            'actividades_id'=> $actividad->id,
+            ]);
+        }
+
+
     }
 }

@@ -19,12 +19,14 @@ class CreateActividadesTable extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->dateTime('fecha_inicio');
-            $table->string('tipo_actividad');
             $table->dateTime('fecha_finalizacion');
             $table->double('costo_mensual');
             $table->string('dia_cursado');
             $table->string('horario');
             $table->string('estado_inscripcion');
+
+            $table->unsignedBigInteger('tipo_actividad_id');
+            $table->foreign('tipo_actividad_id')->references('id')->on('tipos_actividades');
         });
     }
 

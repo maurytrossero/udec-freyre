@@ -14,14 +14,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->TruncateTables([
             'users',
+            'tipos_actividades',
             'actividades',
             'docentes',
             'inscripciones'
         ]);
 
-        $this->call(ActividadesSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(DocentesSeeder::class);
+        $this->call(TiposActividadesSeeder::class);
+        $this->call(ActividadesSeeder::class);
         $this->call(InscripcionesSeeder::class);
     }
 

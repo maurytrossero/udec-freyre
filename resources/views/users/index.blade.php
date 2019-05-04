@@ -8,7 +8,7 @@
         <h1 class="pb-1">{{ $title }}</h1>
 
         <p>
-            <a href="{{ route('users.create') }}" class="btn btn-primary">Nuevo Usuario</a>
+            <a href="{{ route('users.create') }}" class="btn btn-primary"> <span class="oi oi-people"></span>   Nuevo Usuario</a>
         </p>
     </div>
 
@@ -18,17 +18,17 @@
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th scope="col">Opciones</th>
+                <th scope="col"> <span class="oi oi-person"></span>   ID</th>
+                <th scope="col"> <span class="oi oi-fire"></span>   Nombre</th>
+                <th scope="col"> <span class="oi oi-envelope-closed"></span>   Email</th>
+                <th scope="col"> <span class="oi oi-list"></span>   Opciones</th>
             </tr>
             </thead>
             <tbody>
                 @foreach($users as $user)
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->nanme }}</td>
+                        <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             <form action="{{ route('users.destroy',  $user) }}" method="POST">

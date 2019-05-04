@@ -49,8 +49,8 @@
                 @endif
 
 
-                <button type="submit" class="btn-primary">Crear Usuario</button>
-                <a href="{{ route('users') }}" class="btn btn-link"> Regresar </a>
+                <button type="submit" class="btn-primary"> <span class="oi oi-people"></span>   Crear Usuario</button>
+                <a href="{{ route('users') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
         </div>
     </div>

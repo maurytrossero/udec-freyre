@@ -18,7 +18,7 @@ class CreateDocentesTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('DNI');
-            $table->string('dirección');
+            $table->string('direccion');
             $table->string('telefono');
         });
     }

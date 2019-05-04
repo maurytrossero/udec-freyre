@@ -14,7 +14,7 @@
     <ul>
         @if(!empty($users))
             @foreach ($users as $user)
-                <li>  {{$user}}  </li>
+                <li>  {{$user->name}}  ,  {{$user->email}}  ,  {{$user->direccion}}</li>
             @endforeach
 
         @else

@@ -1,0 +1,58 @@
+@extends('layout')
+
+@section('title', "Crear Usuario")
+
+@section('content')
+
+    <div class="card">
+        <h4 class="card-header"> Crear Usuario</h4>
+        <div class="card-body">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <h4>Por favor, revisa los siguientes errores</h4>
+                </div>
+            @endif
+
+
+            <form method="POST" action="{{ url('/usuarios/crear') }}">
+                {!! csrf_field() !!}
+
+                <div class="form-group">
+                    <label for="name" >Nombre: </label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Juan Perez" value="{{ old('name')}}">
+                </div>
+                @if ($errors->has('name'))
+                    <div class="alert alert-danger">
+                        <p>{{ $errors->first('name') }}</p>
+                    </div>
+                @endif
+
+                <div class="form-group">
+                    <label for="email" >Email: </label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="juanperez@example.com" value="{{ old('email')}}">
+                </div>
+                @if ($errors->has('email'))
+                    <div class="alert alert-danger">
+                        <p>{{ $errors->first('email') }}</p>
+                    </div>
+                @endif
+
+
+                <div class="form-group">
+                    <label for="password" >Contraseña: </label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Mayor a 8 caracteres" >
+                </div>
+                @if ($errors->has('password'))
+                    <div class="alert alert-danger">
+                        <p>{{ $errors->first('password') }}</p>
+                    </div>
+                @endif
+
+
+                <button type="submit" class="btn-primary">Crear Usuario</button>
+                <a href="{{ route('users') }}" class="btn btn-link"> Regresar </a>
+            </form>
+        </div>
+    </div>
+
+@endsection

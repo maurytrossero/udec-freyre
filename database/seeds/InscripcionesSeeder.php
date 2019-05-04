@@ -1,5 +1,6 @@
 <?php
 
+use App\Inscripcion;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,17 +20,13 @@ class InscripcionesSeeder extends Seeder
             'actividades_id'=>'1',
         ]);
 
-        $user = DB::table('users')->select('id')->first();
-        $actividad = DB::table('actividades')->select('id')->first();
 
-        //dd($user, $actividad);
-
-        for($i=0;$i<10;$i++)
+        for($i=0;$i<100;$i++)
         {
             DB::table('inscripciones')->insert([
-            'fecha_inscripcion'=> $fechaactual,
-            'user_id'=>$user->id,
-            'actividades_id'=> $actividad->id,
+                'fecha_inscripcion'=> $fechaactual,
+                'user_id'=> random_int(1,50),
+                'actividades_id'=>random_int(1,6),
             ]);
         }
 

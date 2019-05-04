@@ -15,7 +15,7 @@ class ActividadesSeeder extends Seeder
         //Talleres Artesanales
         DB::table('actividades')->insert([
         'nombre'=>'Fotografía',
-        'descripcion'=>'Taller basico de fotografía, donde se enseñan los conocimientos basicos para el manejo de la camara',
+        'descripcion'=>'Taller básico de fotografía, donde se enseñan los conocimientos básicos para el manejo de la cámara',
         'fecha_inicio'=>'2019-04-06',
         'fecha_finalizacion'=>'2019-11-27',
         'costo_mensual'=>'500',
@@ -27,7 +27,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Caricatura',
-            'descripcion'=>'Taller basico para aprender a dibujar caricaturas',
+            'descripcion'=>'Taller básico para aprender a dibujar caricaturas',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -38,19 +38,8 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Caricatura',
-            'descripcion'=>'Taller basico para aprender a dibujar caricaturas',
-            'fecha_inicio'=>'2019-04-06',
-            'fecha_finalizacion'=>'2019-11-27',
-            'costo_mensual'=>'300',
-            'dia_cursado'=>'Martes',
-            'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
-            'tipo_actividad_id' => '1',
-        ]);
-        DB::table('actividades')->insert([
             'nombre'=>'Cerámica',
-            'descripcion'=>'Taller basico para aprender cerḿica',
+            'descripcion'=>'Taller básico para aprender cerámica',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -62,7 +51,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Costura',
-            'descripcion'=>'Taller basico para aprender costura',
+            'descripcion'=>'Taller básico para aprender costura',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -74,7 +63,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Mosaiquismo',
-            'descripcion'=>'Taller basico para aprender mosaiquismo',
+            'descripcion'=>'Taller básico para aprender mosaiquismo',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -86,7 +75,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Pintura',
-            'descripcion'=>'Taller basico para aprender pintura',
+            'descripcion'=>'Taller básico para aprender pintura',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -98,7 +87,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Tapiz',
-            'descripcion'=>'Taller basico para aprender tapiz',
+            'descripcion'=>'Taller básico para aprender tapiz',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -110,7 +99,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Caricatura',
-            'descripcion'=>'Taller basico para aprender a dibujar caricaturas',
+            'descripcion'=>'Taller básico para aprender a dibujar caricaturas',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -122,7 +111,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Tejido',
-            'descripcion'=>'Taller basico para aprender tejido',
+            'descripcion'=>'Taller básico para aprender tejido',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -134,7 +123,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Ajedrez',
-            'descripcion'=>'Taller basico para aprender ajedrez',
+            'descripcion'=>'Taller básico para aprender ajedrez',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -146,7 +135,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Cocina',
-            'descripcion'=>'Taller basico para aprender cocina',
+            'descripcion'=>'Taller básico para aprender cocina',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -158,7 +147,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Pirograbados',
-            'descripcion'=>'Taller basico para aprender pirograbados',
+            'descripcion'=>'Taller básico para aprender pirograbados',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -170,7 +159,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Caricatura',
-            'descripcion'=>'Taller basico para aprender a dibujar caricaturas',
+            'descripcion'=>'Taller básico para aprender a dibujar caricaturas',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -182,7 +171,7 @@ class ActividadesSeeder extends Seeder
         //Talleres Musicales
         DB::table('actividades')->insert([
             'nombre'=>'Batería',
-            'descripcion'=>'Taller basico de bateria',
+            'descripcion'=>'Taller básico de bateria',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -194,7 +183,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Canto',
-            'descripcion'=>'Taller basico de canto',
+            'descripcion'=>'Taller básico de canto',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -206,7 +195,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Solista',
-            'descripcion'=>'Taller basico de Solista',
+            'descripcion'=>'Taller básico de Solista',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -218,7 +207,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Canto Coral',
-            'descripcion'=>'Taller basico de canto coral',
+            'descripcion'=>'Taller básico de canto coral',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -230,7 +219,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Folclore',
-            'descripcion'=>'Taller basico de folclore',
+            'descripcion'=>'Taller básico de folclore',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -242,7 +231,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Malambo',
-            'descripcion'=>'Taller basico de Malambo',
+            'descripcion'=>'Taller básico de Malambo',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -254,7 +243,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Percusión',
-            'descripcion'=>'Taller basico de percusión',
+            'descripcion'=>'Taller básico de percusión',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -266,7 +255,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Piano',
-            'descripcion'=>'Taller basico de piano',
+            'descripcion'=>'Taller básico de piano',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -278,7 +267,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Guitarra',
-            'descripcion'=>'Taller basico de guitarra',
+            'descripcion'=>'Taller básico de guitarra',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -290,8 +279,8 @@ class ActividadesSeeder extends Seeder
 
         //Talleres de Idiomas
         DB::table('actividades')->insert([
-            'nombre'=>'Ingles',
-            'descripcion'=>'Taller basico de ingles',
+            'nombre'=>'Inglés',
+            'descripcion'=>'Taller básico de inglés',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -302,8 +291,8 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Frances',
-            'descripcion'=>'Taller basico de francés',
+            'nombre'=>'Francés',
+            'descripcion'=>'Taller básico de francés',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -315,7 +304,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Italiano',
-            'descripcion'=>'Taller basico de italiano',
+            'descripcion'=>'Taller básico de italiano',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -351,8 +340,8 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Coro polifonico',
-            'descripcion'=>'Elenco destinado al coro polifónico',
+            'nombre'=>'Coro Polifónico',
+            'descripcion'=>'Elenco destinado al Coro Polifónico',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -401,7 +390,7 @@ class ActividadesSeeder extends Seeder
         //Cursos
         DB::table('actividades')->insert([
             'nombre'=>'Agronegocios',
-            'descripcion'=>'Curso con orientancion en agronegocios',
+            'descripcion'=>'Curso con orientanción en Agronegocios',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -412,8 +401,8 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Enfermeria',
-            'descripcion'=>'Curso con orientación en enfermeria',
+            'nombre'=>'Enfermería',
+            'descripcion'=>'Curso con orientación en enfermería',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -424,7 +413,7 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Curso Exterior',
+            'nombre'=>'Comercio Exterior',
             'descripcion'=>'Curso con orientación en Comercio Exterior',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
@@ -460,7 +449,7 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Gestión administrativa',
+            'nombre'=>'Gestión Administrativa',
             'descripcion'=>'Curso con orientación en Gestión Administrativa',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
@@ -485,7 +474,7 @@ class ActividadesSeeder extends Seeder
 
         DB::table('actividades')->insert([
             'nombre'=>'Marketing digital',
-            'descripcion'=>'Curso con orientación en Marketing digital',
+            'descripcion'=>'Curso con orientación en Marketing Digital',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
             'costo_mensual'=>'300',
@@ -508,7 +497,7 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Inglés para el viajero',
+            'nombre'=>'Inglés para el Viajero',
             'descripcion'=>'Curso con orientación en Inglés para el viajero',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',
@@ -617,7 +606,7 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Conexión de redes electricas',
+            'nombre'=>'Conexión de Redes Eléctricas',
             'descripcion'=>'Capacitación con orientación en Conexion de redes eléctricas',
             'fecha_inicio'=>'2019-04-06',
             'fecha_finalizacion'=>'2019-11-27',

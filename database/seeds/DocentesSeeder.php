@@ -14,7 +14,7 @@ class DocentesSeeder extends Seeder
     {
         DB::table('docentes')->insert([
             'nombre'=>'Bibiana Luque',
-            'DNI'=>'24785478',
+            'dni'=>'24785478',
             'direccion'=>'25 de mayo 787, Morteros',
             'telefono'=>'3562515307',
         ]);

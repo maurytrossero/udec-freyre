@@ -15,9 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/usuarios','UserController@index');
+Route::get('/usuarios','UserController@index')
+    ->name('users');
 
 Route::get('/usuarios/{id}','UserController@show')
-    ->where('id', '[0-9]+');
+    ->where('id', '[0-9]+')
+    ->name('users.show');
 
-Route::get('/usuarios/nuevo','UserController@create');
+Route::get('/usuarios/nuevo','UserController@create')
+    ->name('users.create');
+
+Route::post('/usuarios/crear', 'UserController@store');
+
+Route::get('/usuarios/{user}/editar','UserController@edit')
+    ->name('users.edit');
+
+Route::put('/usuarios/{user}', 'UserController@update');
+
+Route::delete('/usuarios/{user}', 'UserController@destroy')
+    ->name('users.destroy');

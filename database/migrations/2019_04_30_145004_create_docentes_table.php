@@ -17,9 +17,9 @@ class CreateDocentesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('nombre');
-            $table->string('DNI');
-            $table->string('direccion');
-            $table->string('telefono');
+            $table->string('dni');
+            $table->string('direccion')->nullable();
+            $table->string('telefono')->nullable();
         });
     }
 

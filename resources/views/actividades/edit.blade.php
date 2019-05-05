@@ -100,7 +100,7 @@
                     <div class="form-group">
                         <label for="tipo_actividad" >Tipo de Actividad: </label>
                         <div class="form-group">
-                            <select name="select_actividad_id">
+                            <select name="select_actividad_id" class="btn btn-light btn-group-vertical btn-block">
                                 <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
                                 @foreach($tipos_actividades as $tipo_actividad)
 
@@ -114,7 +114,7 @@
                     <div class="form-group">
                         <label for="estado_inscripcion" >Estado de Inscripcion: </label>
                         <div class="form-group">
-                            <select name="select_estado_inscripcion">
+                            <select name="select_estado_inscripcion" class="btn btn-light btn-group-vertical btn-block">
                                 <option value="null" selected>-- Seleccionar estado de inscripción -- </option>
                                     <option value="{{ 'abierta'  }}"> {{ 'Abierta' }} </option>
                                     <option value="{{ 'cerrada'  }}"> {{ 'Cerrada' }} </option>

@@ -121,7 +121,7 @@
                     -->
 
                     <div class="form-group">
-                        <select name="select_actividad_id">
+                        <select name="select_actividad_id" class="btn btn-light btn-group-vertical btn-block">
                             <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
                             @foreach($tipos_actividades as $tipo_actividad)
 

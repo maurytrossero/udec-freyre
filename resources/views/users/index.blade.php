@@ -59,6 +59,7 @@
     @else
         <p>No hay usuarios Registrados</p>
     @endif
+
 @endsection
 
 @section('sidebar')

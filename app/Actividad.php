@@ -84,14 +84,6 @@ class Actividad extends Model
         $this->estado_inscripcion = $estado_inscripcion;
     }
 
-    //RELACIÓN BASE DE DATOS
-
-
-    public function inscripciones()
-    {
-        return $this->hasMany(Inscripcion::class);
-    }
-
     public function getTipoActividadId()
     {
         return $this->tipo_actividad_id;
@@ -102,4 +94,10 @@ class Actividad extends Model
         $this->tipo_actividad_id = $tipo_actividad_id;
     }
 
+
+    //RELACIÓN BASE DE DATOS
+    public function inscripciones()
+    {
+        return $this->hasMany(Inscripcion::class);
+    }
 }

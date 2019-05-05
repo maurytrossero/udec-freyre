@@ -96,17 +96,31 @@
                         </div>
                     @endif
 
+
                     <div class="form-group">
-                        <select name="select_actividad_id">
-                            <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
-                            @foreach($tipos_actividades as $tipo_actividad)
+                        <label for="tipo_actividad" >Tipo de Actividad: </label>
+                        <div class="form-group">
+                            <select name="select_actividad_id">
+                                <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
+                                @foreach($tipos_actividades as $tipo_actividad)
 
-                                <option value="{{ $tipo_actividad->getId()}}"> {{ $tipo_actividad->getNombre() }} </option>
+                                    <option value="{{ $tipo_actividad->getId()}}"> {{ $tipo_actividad->getNombre() }} </option>
 
-                            @endforeach
-                        </select>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
+                    <div class="form-group">
+                        <label for="estado_inscripcion" >Estado de Inscripcion: </label>
+                        <div class="form-group">
+                            <select name="select_estado_inscripcion">
+                                <option value="null" selected>-- Seleccionar estado de inscripción -- </option>
+                                    <option value="{{ 'abierta'  }}"> {{ 'Abierta' }} </option>
+                                    <option value="{{ 'cerrada'  }}"> {{ 'Cerrada' }} </option>
+                            </select>
+                        </div>
+                    </div>
 
 
 

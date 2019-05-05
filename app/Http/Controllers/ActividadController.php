@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actividad;
+use App\TipoActividad;
 use Illuminate\Http\Request;
 
 class ActividadController extends Controller
@@ -19,13 +20,21 @@ class ActividadController extends Controller
     public function show($id)
     {
         $actividad = Actividad::findOrFail($id);
+        $tipo_actividad = TipoActividad::findOrFail($actividad->getTipoActividadId());
 
-        return view('actividades.show',compact('actividad'));
+        return view('actividades.show')
+            ->with('actividad',$actividad)
+            ->with('tipo_actividad',$tipo_actividad);
+
     }
 
     public function create()
     {
-        return view('actividades.create');
+
+        $tipos_actividades = TipoActividad::all();
+
+        return view('actividades.create')
+            ->with('tipos_actividades',$tipos_actividades);
     }
 
     public function store()
@@ -59,6 +68,12 @@ class ActividadController extends Controller
         $actividad->setHorario(request()->input('horario'));
         $actividad->setEstadoInscripcion('abierta');
 
+        if(request()->input('select_actividad_id')!=null)
+        {
+            $actividad->setTipoActividadId((request()->input('select_actividad_id')));
+
+        }
+
         $actividad->save();
 
 
@@ -67,7 +82,10 @@ class ActividadController extends Controller
 
     public function edit(Actividad $actividad)
     {
-        return view('actividades.edit', ['actividad' => $actividad]);
+        $tipos_actividades = TipoActividad::all();
+
+
+        return view('actividades.edit', ['actividad' => $actividad,'tipos_actividades'=> $tipos_actividades]);
     }
 
     public function update(Actividad $actividad)
@@ -91,6 +109,12 @@ class ActividadController extends Controller
                 'dia_cursado.required' => 'Debe ingresar el dia de cursado de la actividad',
                 'horario' => 'Debe ingresar el horario de la actividad',
             ]);
+
+        if(request()->input('select_actividad_id')!=null)
+        {
+            $actividad->setTipoActividadId((request()->input('select_actividad_id')));
+
+        }
 
         $actividad->update($data);
 

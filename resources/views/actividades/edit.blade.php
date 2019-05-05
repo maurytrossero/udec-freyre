@@ -96,6 +96,19 @@
                         </div>
                     @endif
 
+                    <div class="form-group">
+                        <select name="select_actividad_id">
+                            <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
+                            @foreach($tipos_actividades as $tipo_actividad)
+
+                                <option value="{{ $tipo_actividad->getId()}}"> {{ $tipo_actividad->getNombre() }} </option>
+
+                            @endforeach
+                        </select>
+                    </div>
+
+
+
 
                     <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Actualizar Actividad</button>
                     <a href="{{ route('actividades') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>

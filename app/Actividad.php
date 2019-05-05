@@ -10,7 +10,7 @@ class Actividad extends Model
     protected $table = 'actividades';
 
     protected $fillable = ['nombre','descripcion','fecha_inicio','fecha_finalizacion','costo_mensual',
-        'dia_cursado','horario','estado_inscripcion'];
+        'dia_cursado','horario','estado_inscripcion','tipo_actividad_id'];
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
@@ -91,4 +91,15 @@ class Actividad extends Model
     {
         return $this->hasMany(Inscripcion::class);
     }
+
+    public function getTipoActividadId()
+    {
+        return $this->tipo_actividad_id;
+    }
+
+    public function setTipoActividadId($tipo_actividad_id)
+    {
+        $this->tipo_actividad_id = $tipo_actividad_id;
+    }
+
 }

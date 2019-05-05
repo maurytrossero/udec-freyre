@@ -31,6 +31,11 @@
             </tr>
 
             <tr>
+                <th scope="col"> Tipo de Actividad</th>
+                <td>{{ $tipo_actividad->getNombre()}}</td>
+            </tr>
+
+            <tr>
                 <th scope="col"> Fecha de inicio</th>
 
                 <td>{{ \Carbon\Carbon::parse($actividad->getFechaInicio())->format('d/m/Y')}}</td>

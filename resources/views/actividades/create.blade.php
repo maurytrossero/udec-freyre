@@ -98,6 +98,44 @@
                 @endif
 
 
+
+                <div class="form-group">
+                    <label for="tipo_actividad" >Tipo de Actividad: </label>
+
+
+
+                    <!-- Box Seleccionar tipo de Actividad
+                    <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
+
+                        <div class="btn-group" role="group">
+                            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" >
+                                Seleccionar
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+
+                                @foreach($tipos_actividades as $tipo_actividad)
+                                    <a class="dropdown-item" value="{{ $tipo_actividad->getId()}}"> {{$tipo_actividad->getNombre()}} </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="form-group">
+                        <select name="select_actividad_id">
+                            <option value="null" selected>-- Seleccionar tipo de Actividad -- </option>
+                            @foreach($tipos_actividades as $tipo_actividad)
+
+                                <option value="{{ $tipo_actividad->getId()}}"> {{ $tipo_actividad->getNombre() }} </option>
+
+                            @endforeach
+                        </select>
+                    </div>
+
+                </div>
+
+
                 <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Crear Actividad</button>
                 <a href="{{ route('actividades') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>

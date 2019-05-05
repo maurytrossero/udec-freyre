@@ -102,8 +102,6 @@
                 <div class="form-group">
                     <label for="tipo_actividad" >Tipo de Actividad: </label>
 
-
-
                     <!-- Box Seleccionar tipo de Actividad
                     <div class="btn-group " role="group" aria-label="Button group with nested dropdown">
 
@@ -132,6 +130,12 @@
                             @endforeach
                         </select>
                     </div>
+                    @if ($errors->has('select_actividad_id'))
+                        <div class="alert alert-danger">
+                            <p>{{ $errors->first('select_actividad_id') }}</p>
+                        </div>
+                    @endif
+
 
                 </div>
 

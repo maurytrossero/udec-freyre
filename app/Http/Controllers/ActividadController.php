@@ -47,6 +47,8 @@ class ActividadController extends Controller
             'costo' => 'required',
             'dia_cursado' => 'required',
             'horario' => 'required',
+            'select_actividad_id' => 'numeric',
+
         ],
             [
                 'nombre.required' => 'El nombre es obligatorio',
@@ -56,6 +58,7 @@ class ActividadController extends Controller
                 'costo.required' => 'Debe ingresar el costo mensual',
                 'dia_cursado.required' => 'Debe ingresar el dia de cursado de la actividad',
                 'horario.required' => 'Debe ingresar el horario de la actividad',
+                'select_actividad_id.numeric' => 'Debe elegir  un tipo de actividad',
             ]);
 
         $actividad = new Actividad();
@@ -68,7 +71,7 @@ class ActividadController extends Controller
         $actividad->setHorario(request()->input('horario'));
         $actividad->setEstadoInscripcion('abierta');
 
-        if(request()->input('select_actividad_id')!=null)
+        if(request()->input('select_actividad_id')!='null')
         {
             $actividad->setTipoActividadId((request()->input('select_actividad_id')));
 
@@ -91,7 +94,7 @@ class ActividadController extends Controller
     public function update(Actividad $actividad)
     {
 
-        $data = request()->validate([
+        request()->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
             'fecha_inicio' => 'required',
@@ -110,13 +113,30 @@ class ActividadController extends Controller
                 'horario' => 'Debe ingresar el horario de la actividad',
             ]);
 
-        if(request()->input('select_actividad_id')!=null)
+        if(request()->input('select_actividad_id')!='null')
         {
+           // dd((request()->input('select_actividad_id')));
             $actividad->setTipoActividadId((request()->input('select_actividad_id')));
 
         }
 
-        $actividad->update($data);
+        if(request()->input('select_estado_inscripcion')!='null')
+        {
+            //dd((request()->input('select_estado_inscripcion')));
+
+            $actividad->setEstadoInscripcion((request()->input('select_estado_inscripcion')));
+
+        }
+
+        $actividad->setNombre(request()->input('nombre'));
+        $actividad->setDescripcion(request()->input('descripcion'));
+        $actividad->setFechaInicio(request()->input('fecha_inicio'));
+        $actividad->setFechaFinalizacion(request()->input('fecha_finalizacion'));
+        $actividad->setCostoMensual(request()->input('costo'));
+        $actividad->setDiaCursado(request()->input('dia_cursado'));
+        $actividad->setHorario(request()->input('horario'));
+
+        $actividad->update();
 
         return redirect()->route('actividades.show', ['actividad' => $actividad]);
     }

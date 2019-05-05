@@ -13,6 +13,7 @@ class InscripcionesSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $fechaactual = date("Y-m-d");
         DB::table('inscripciones')->insert([
             'fecha_inscripcion'=> $fechaactual,
@@ -29,7 +30,7 @@ class InscripcionesSeeder extends Seeder
                 'actividades_id'=>random_int(1,6),
             ]);
         }
-
+*/
 
     }
 }

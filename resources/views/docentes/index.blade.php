@@ -3,7 +3,6 @@
 @section('title', 'Docentes')
 
 @section('content')
-
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
             <div class="d-flex justify-content-between align-items-end mb-2">
@@ -16,19 +15,18 @@
     </div>
 
 
-
     @if($docentes->IsNotEmpty())
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
                 <div class="table-responsive">
-                    <table class="table table table-striped table-bordered table-condensed table-hover">
+                    <table class="table table table-striped table-bordered table-condensed table-hover small">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col"> ID</th>
-                            <th scope="col"> Nombre</th>
-                            <th scope="col"> Documento</th>
-                            <th scope="col"> <span class="oi oi-list"></span> Opciones</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                         </thead>
                         <tbody>

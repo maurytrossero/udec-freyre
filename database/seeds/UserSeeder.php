@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'telefono'=>'3564359758',
         ]);
 
-        //factory(User::class,50)->create();
+        factory(User::class,50)->create();
 
     }
 }

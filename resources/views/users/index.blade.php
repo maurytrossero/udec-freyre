@@ -8,14 +8,11 @@
             <div class="d-flex justify-content-between align-items-end mb-2">
                 <h4 class="pb-1">{{ $title }}</h4>
             </div>
-
             <div class="d-flex justify-content-between align-items-end mb-2">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary btn btn-block"> <span class="oi oi-people"></span>   Nuevo Usuario</a>
+                <a href="{{ route('users.create') }}" class="btn btn-primary btn btn-block"> <span class="oi oi-people"></span>   Nuevo Usuario</a>
             </div>
-
         </div>
     </div>
-
 
 
     @if($users->IsNotEmpty())
@@ -23,13 +20,13 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-condensed table-hover">
+                    <table class="table table-striped table-bordered table-condensed table-hover small">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col "> <span class="oi oi-person"></span>   ID</th>
-                            <th scope="col"> <span class="oi oi-fire"></span>   Nombre</th>
-                            <th scope="col"> <span class="oi oi-envelope-closed"></span>   Email</th>
-                            <th scope="col"> <span class="oi oi-list"></span>   Opciones</th>
+                            <th scope="col ">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                         </thead>
                         <tbody>

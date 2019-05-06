@@ -20,7 +20,7 @@
 <header>
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">UDEC</a>
+        <a class="navbar-brand" href="{{ url ('/home')}}">UDEC - Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,14 +49,9 @@
 <!-- Begin page content -->
 <main role="main" class="container">
     <div class="row mt-3">
-        <div class="col-8">
+        <div class="col-12">
             @yield('content')
-        </div>
-        <div class="col-4">
-            @section('sidebar')
 
-            @show
-        </div>
     </div>
 </main>
 

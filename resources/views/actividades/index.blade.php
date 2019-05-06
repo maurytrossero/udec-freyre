@@ -3,10 +3,8 @@
 @section('title', 'Actividades')
 
 @section('content')
-
-
+    <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
-
             <div class="d-flex justify-content-between align-items-end mb-2">
                 <h4 class="pb-1">{{ $title }}</h4>
             </div>
@@ -14,20 +12,21 @@
                 <a href="{{ route('actividades.create') }}" class="btn btn-primary btn-block">  <span class="oi oi-dashboard"></span> Crear Nueva Actividad</a>
             </div>
         </div>
+    </div>
 
 
     @if($actividades->IsNotEmpty())
 
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
                 <div class="table-responsive">
-                    <table class="table table table-striped table-bordered table-condensed table-hover">
+                    <table class="table table table-striped table-bordered table-condensed table-hover small">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col"> ID</th>
-                            <th scope="col"> Nombre</th>
-                            <th scope="col"> Descripcion</th>
-                            <th scope="col"> Opciones</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,7 +50,7 @@
                     </table>
                 </div>
             </div>
-
+        </div>
 
 
 

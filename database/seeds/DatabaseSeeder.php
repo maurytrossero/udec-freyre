@@ -29,15 +29,11 @@ class DatabaseSeeder extends Seeder
 
     public function TruncateTables(array $tables): void
     {
-
         foreach ($tables as $table)
         {
-            /*
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             DB::table($table)->truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
-            */
-            DB::statement("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE");
         }
 
     }

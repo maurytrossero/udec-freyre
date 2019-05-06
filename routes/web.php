@@ -80,3 +80,7 @@ Route::put('/docentes/{docente}', 'DocenteController@update');
 
 Route::delete('/docentes/{docente}', 'DocenteController@destroy')
     ->name('docentes.destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

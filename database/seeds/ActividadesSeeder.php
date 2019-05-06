@@ -98,18 +98,6 @@ class ActividadesSeeder extends Seeder
         ]);
 
         DB::table('actividades')->insert([
-            'nombre'=>'Caricatura',
-            'descripcion'=>'Taller básico para aprender a dibujar caricaturas',
-            'fecha_inicio'=>'2019-04-06',
-            'fecha_finalizacion'=>'2019-11-27',
-            'costo_mensual'=>'300',
-            'dia_cursado'=>'Martes',
-            'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
-            'tipo_actividad_id' => '1',
-        ]);
-
-        DB::table('actividades')->insert([
             'nombre'=>'Tejido',
             'descripcion'=>'Taller básico para aprender tejido',
             'fecha_inicio'=>'2019-04-06',

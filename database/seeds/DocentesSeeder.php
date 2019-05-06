@@ -18,8 +18,7 @@ class DocentesSeeder extends Seeder
             'direccion'=>'25 de mayo 787, Morteros',
             'telefono'=>'3562515307',
         ]);
-        /*
+
         factory(\App\Docente::class,5)->create();
-        */
     }
 }

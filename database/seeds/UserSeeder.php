@@ -24,15 +24,51 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'name'=>'Veronica Sayago',
-            'email'=>'veronicasayago@gmail.com',
+            'name'=>'Juan Perez',
+            'email'=>'juanperez@gmail.com',
             'password'=> bcrypt('v12345678'),
             'DNI'=>'36785478',
             'direccion'=>'Gral. Mitre 248',
-            'telefono'=>'3564359758',
+            'telefono'=>'3011439758',
         ]);
 
-        factory(User::class,50)->create();
+        User::create([
+            'name'=>'Juan de los palotes',
+            'email'=>'juandelospalotes@gmail.com',
+            'password'=> bcrypt('v12345678'),
+            'DNI'=>'36785478',
+            'direccion'=>'Muy lejos 987',
+            'telefono'=>'3011439758',
+        ]);
+
+        User::create([
+            'name'=>'Perdro gonzalez',
+            'email'=>'pedrogonzalez@gmail.com',
+            'password'=> bcrypt('v12345678'),
+            'DNI'=>'36785478',
+            'direccion'=>'calle ancha 785',
+            'telefono'=>'3011439758',
+        ]);
+
+        User::create([
+            'name'=>'Jesica Sanchez',
+            'email'=>'jesicasanchez@gmail.com',
+            'password'=> bcrypt('v12345678'),
+            'DNI'=>'36785478',
+            'direccion'=>'Muy cerca 147',
+            'telefono'=>'3011439758',
+        ]);
+
+        User::create([
+            'name'=>'Jeny Fernandez',
+            'email'=>'jenifernandez@gmail.com',
+            'password'=> bcrypt('v12345678'),
+            'DNI'=>'36785478',
+            'direccion'=>'Calle sin numero',
+            'telefono'=>'3011439758',
+        ]);
+
+        //factory(User::class,50)->create();
 
     }
 }

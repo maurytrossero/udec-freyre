@@ -56,13 +56,33 @@
                             </tr>
 
                             <tr>
+                                <th scope="col"> Docente: </th>
+                                <td>
+                                    @foreach($docentes as $docente)
+                                        <li class="align-items-center"> {{ $docente->nombre }} </li>
+                                    @endforeach
+                                </td>
+                            </tr>
+
+                            <tr>
                                 <th scope="col"> Inscripciones</th>
                                 <td>{{ $actividad->getEstadoInscripcion()}}</td>
                             </tr>
                             </tbody>
                         </table>
 
-                        <a href="{{ route('actividades') }}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>   Regresar </a>
+
+                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-primary">
+                            <span class="oi oi-action-undo"></span>   Inscribir actividad</a>
+
+
+                        @role('admin')
+                            <a href="{{ route('actividades.edit',$actividad)}}" class="btn btn-primary">
+                                <span class="oi oi-action-undo"></span>  Editar detalles </a>
+                        @endrole
+
+                        <a href="{{ route('actividades.index') }}" class="btn btn-primary">
+                            <span class="oi oi-action-undo"></span>   Regresar </a>
 
                     </div>
                 </div>

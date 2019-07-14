@@ -18,7 +18,7 @@
                     A continuación podrá ver y/o inscribirse a nuestros Talleres, Elencos, Cursos y Capacitaciones
                     que tenemos para ofrecerle.
 
-                    <a href="{{ route('actividades') }}" class="btn btn-link btn btn-block">Ver Actividades </a>
+                    <a href="{{ route('actividades.index') }}" class="btn btn-link btn btn-block">Ver Actividades </a>
 
                 </div>
             </div>

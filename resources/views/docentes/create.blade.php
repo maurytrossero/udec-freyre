@@ -3,7 +3,7 @@
 @section('title', "Crear Docente")
 
 @section('content')
-
+@role('admin')
     <div class="card">
         <h4 class="card-header"> Crear Docente</h4>
         <div class="card-body">
@@ -60,9 +60,9 @@
                 @endif
 
                 <button type="submit" class="btn-primary"> <span class="oi oi-people"></span>   Crear Docente</button>
-                <a href="{{ route('users') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
+                <a href="{{ route('users.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
         </div>
     </div>
-
+@endrole
 @endsection

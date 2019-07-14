@@ -23,32 +23,43 @@
 
                         <table class="table">
                             <tbody>
-                            <tr>
-                                <th scope="col">ID</th>
-                                <td>{{ $docente->getId()}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">   Nombre</th>
-                                <td>{{ $docente->getNombre()}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">   Nro.Documento</th>
-                                <td>{{ $docente->getDni()}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">   Telefono</th>
-                                <td>{{ $docente->getTelefono()}}</td>
-                            </tr>
-                            <tr>
-                                <th scope="col">   Direccion</th>
-                                <td>{{ $docente->getDireccion()}}</td>
-                            </tr>
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <td>{{ $docente->getId()}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">   Nombre</th>
+                                    <td>{{ $docente->getNombre()}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">   Nro.Documento</th>
+                                    <td>{{ $docente->getDni()}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">   Telefono</th>
+                                    <td>{{ $docente->getTelefono()}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">   Direccion</th>
+                                    <td>{{ $docente->getDireccion()}}</td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="col">   Actividad a cargo</th>
+                                    <td>
+                                        @foreach($actividades as $actividad)
+                                            <li class="align-items-center"> {{ $actividad->nombre }} </li>
+                                        @endforeach
+                                    </td>
+                                </tr>
 
                             </tbody>
                         </table>
 
                         <a href="{{ url ('/docentes/')}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Regresar </a>
-
+                        @role('admin')
+                            <a href="{{ route('docentes.edit',$docente)}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Editar detalles </a>
+                        @endrole
                     </div>
                 </div>
             </div>

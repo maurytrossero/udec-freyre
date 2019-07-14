@@ -1,7 +1,7 @@
 @extends('layout')
 
-@section('title', 'Docentes')
-
+@section('title', 'Roles')
+@role('admin')
 @section('content')
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
@@ -9,15 +9,18 @@
                 <h4 class="pb-1">{{ $title }}</h4>
             </div>
             <div class="d-flex justify-content-between align-items-end mb-2">
-                @role('admin')
-                    <a href="{{ route('docentes.create') }}" class="btn btn-primary btn-block"> <span class="oi oi-people"></span>   Nuevo Docente</a>
-                @endrole
+
+
+                    <a href="{{ route('roles.create') }}" class="btn btn-primary btn-block">
+                        <span class="oi oi-people"></span>   Nuevo Rol</a>
+
+
             </div>
         </div>
     </div>
 
 
-    @if($docentes->IsNotEmpty())
+    @if($roles->IsNotEmpty())
 
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
@@ -27,32 +30,30 @@
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Documento</th>
                             <th scope="col">Opciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($docentes as $docente)
+                        @foreach($roles as $role)
                             <tr>
-                                <th scope="row">{{ $docente->getId() }}</th>
-                                <td>{{ $docente->getNombre() }}</td>
-                                <td>{{ $docente->getDni() }}</td>
+                                <th scope="row">{{ $role->id }}</th>
+                                <td>{{ $role->name }}</td>
                                 <td>
-                                    @role('admin')
-                                        <form action="{{ route('docentes.destroy',  $docente) }}" method="POST">
+
+                                    @can('roles.destroy')
+                                        <form action="{{ route('roles.destroy',  $role) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
+                                            @can('roles.show')
+                                                <a href="{{ route('roles.show', $role) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
+                                            @endcan
+                                            @can('roles.edit')
+                                                <a href="{{ route('roles.edit',  $role) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
+                                                <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
+                                            @endcan
                                         </form>
-                                    @endrole
-
-                                    @can('docentes.show')
-                                        <a href="{{ route('docentes.show', $docente) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
                                     @endcan
 
-                                    @role('admin')
-                                        <a href="{{ route('docentes.edit',  $docente) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
-                                    @endrole
 
                                 </td>
                             </tr>
@@ -67,10 +68,11 @@
 
 
     @else
-        <p>No hay docentes Registrados</p>
+        <p>No hay roles Registrados</p>
     @endif
 @endsection
 
+@endrole
 @section('sidebar')
     @parent
 

@@ -9,7 +9,11 @@
                 <h4 class="pb-1">{{ $title }}</h4>
             </div>
             <div class="d-flex justify-content-between align-items-end mb-2">
-                <a href="{{ route('actividades.create') }}" class="btn btn-primary btn-block">  <span class="oi oi-dashboard"></span> Crear Nueva Actividad</a>
+                @role('admin')
+                    @can('actividades.create')
+                        <a href="{{ route('actividades.create') }}" class="btn btn-primary btn-block">  <span class="oi oi-dashboard"></span> Crear Nueva Actividad</a>
+                    @endcan
+                @endrole
             </div>
         </div>
     </div>
@@ -36,13 +40,21 @@
                                 <td>{{ $actividad->getNombre() }}</td>
                                 <td>{{ $actividad->getDescripcion() }}</td>
                                 <td>
-                                    <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
+
+                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
+
+                                    @role('admin')
                                         <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
-                                        <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
-                                    </form>
+                                    @endrole
+
+                                    @role('admin')
+                                        <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
+                                        </form>
+                                    @endrole
+
                                 </td>
                             </tr>
                         @endforeach

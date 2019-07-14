@@ -3,7 +3,7 @@
 @section('title', "Editar Docente")
 
 @section('content')
-
+@role('admin')
     <div class="card">
         <h4 class="card-header"> Editar Docente</h4>
         <div class="card-body">
@@ -68,5 +68,5 @@
                 <button type="submit" class="btn btn-primary"> <span class="oi oi-data-transfer-upload"></span>   Actualizar Docente</button>
                 <a href="{{ url ('/docentes/')}}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
-
+@endrole
 @endsection

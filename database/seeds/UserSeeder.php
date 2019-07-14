@@ -1,8 +1,12 @@
 <?php
 
+use App\Rol2;
 use App\User;
 use Illuminate\Database\Seeder;
+use Caffeinated\Shinobi\Models\Role;
+
 use Illuminate\Support\Facades\DB;
+
 
 class UserSeeder extends Seeder
 {
@@ -14,61 +18,69 @@ class UserSeeder extends Seeder
     public function run()
     {
 
-        User::create([
-            'name'=>'Mauricio Trossero',
-            'email'=>'maurytrossero@gmail.com',
-            'password'=>bcrypt('m36001479'),
-            'DNI'=>'36001479',
-            'direccion'=>'San Martin 928',
-            'telefono'=>'3564607490',
+        Role::create([
+            'name' => 'Admin',
+            'slug' => 'admin',
+            'special' => 'all-access',
+            'description' => 'Rol Administrador',
         ]);
 
-        User::create([
-            'name'=>'Juan Perez',
-            'email'=>'juanperez@gmail.com',
-            'password'=> bcrypt('v12345678'),
-            'DNI'=>'36785478',
-            'direccion'=>'Gral. Mitre 248',
-            'telefono'=>'3011439758',
+        Role::create([
+            'name' => 'Alumno',
+            'slug' => 'alumno',
+            'description' => 'Rol Alumno',
         ]);
 
-        User::create([
-            'name'=>'Juan de los palotes',
-            'email'=>'juandelospalotes@gmail.com',
-            'password'=> bcrypt('v12345678'),
-            'DNI'=>'36785478',
-            'direccion'=>'Muy lejos 987',
-            'telefono'=>'3011439758',
+        Role::create([
+            'name' => 'Docente',
+            'slug' => 'docente',
+            'description' => 'Rol Docente',
         ]);
 
-        User::create([
-            'name'=>'Perdro gonzalez',
-            'email'=>'pedrogonzalez@gmail.com',
-            'password'=> bcrypt('v12345678'),
-            'DNI'=>'36785478',
-            'direccion'=>'calle ancha 785',
-            'telefono'=>'3011439758',
-        ]);
+        $rol_user = Role::where('name','Alumno')->first();
+        $user = new User();
+        $user->name = "Mauricio Trossero";
+        $user->email = "maurytrossero@gmail.com";
+        $user->password = bcrypt('m36001479');
+        $user->dni = "36001479";
+        $user->direccion = "San Martin 928";
+        $user->telefono = "3564607490";
+        $user->save();
+        $user->Roles()->attach($rol_user);
 
-        User::create([
-            'name'=>'Jesica Sanchez',
-            'email'=>'jesicasanchez@gmail.com',
-            'password'=> bcrypt('v12345678'),
-            'DNI'=>'36785478',
-            'direccion'=>'Muy cerca 147',
-            'telefono'=>'3011439758',
-        ]);
 
-        User::create([
-            'name'=>'Jeny Fernandez',
-            'email'=>'jenifernandez@gmail.com',
-            'password'=> bcrypt('v12345678'),
-            'DNI'=>'36785478',
-            'direccion'=>'Calle sin numero',
-            'telefono'=>'3011439758',
-        ]);
+        $rol_user = Role::where('name','Admin')->first();
+        $user = new User();
+        $user->name = "Administrador";
+        $user->email = "administrador@admin.com";
+        $user->password = bcrypt('m36001479');
+        $user->dni = "36001479";
+        $user->direccion = "";
+        $user->telefono = "3564607490";
+        $user->save();
+        $user->Roles()->attach($rol_user);
 
-        //factory(User::class,50)->create();
+        $rol_user = Role::where('name','Alumno')->first();
+        $user = new User();
+        $user->name = "MT Producciones";
+        $user->email = "mtproduccioneshd@gmail.com";
+        $user->password = bcrypt('m36001479');
+        $user->dni = "36001479";
+        $user->direccion = "";
+        $user->telefono = "3564607490";
+        $user->save();
+        $user->Roles()->attach($rol_user);
+
+        $rol_user = Role::where('name','Admin')->first();
+        $user = new User();
+        $user->name = "Emiliano Gorgerino";
+        $user->email = "emilianogorgerino@gmail.com";
+        $user->password = bcrypt('m36001479');
+        $user->dni = "36001479";
+        $user->direccion = "";
+        $user->telefono = "3564607490";
+        $user->save();
+        $user->Roles()->attach($rol_user);
 
     }
 }

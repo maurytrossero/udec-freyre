@@ -13,26 +13,12 @@ class DocentesSeeder extends Seeder
     public function run()
     {
         DB::table('docentes')->insert([
-            'nombre'=>'Pedro Alvarez',
+            'nombre'=>'Bibiana Luque',
             'dni'=>'24785478',
-            'direccion'=>'25 de mayo 787',
+            'direccion'=>'25 de mayo 787, Morteros',
             'telefono'=>'3562515307',
         ]);
 
-        DB::table('docentes')->insert([
-            'nombre'=>'Esteban Quito',
-            'dni'=>'544558',
-            'direccion'=>'9 de julio 32',
-            'telefono'=>'3562515307',
-        ]);
-
-        DB::table('docentes')->insert([
-            'nombre'=>'Juana Garcia',
-            'dni'=>'745624',
-            'direccion'=>'San Martin s/n',
-            'telefono'=>'78452147',
-        ]);
-
-        //factory(\App\Docente::class,5)->create();
+        factory(\App\Docente::class,5)->create();
     }
 }

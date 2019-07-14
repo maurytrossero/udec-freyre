@@ -3,7 +3,7 @@
 @section('title', "Editar Actividad")
 
 @section('content')
-
+@role('admin')
     <div class="card">
         <h4 class="card-header"> Editar Actividad</h4>
         <div class="card-body">
@@ -123,11 +123,31 @@
                     </div>
 
 
+                    <div class="form-group">
+                        <label for="docente" >Docente: </label>
+
+                        <div class="form-group">
+                            <select name="select_docente_id" class="btn btn-light btn-group-vertical btn-block">
+                                <option value="null" selected>-- Seleccionar docente a cargo -- </option>
+                                @foreach($docentes as $docente)
+
+                                    <option value="{{ $docente->getId()}}"> {{ $docente->getNombre() }} </option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                        @if ($errors->has('select_docente_id'))
+                            <div class="alert alert-danger">
+                                <p>{{ $errors->first('select_docente_id') }}</p>
+                            </div>
+                        @endif
+                    </div>
+
 
                     <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Actualizar Actividad</button>
-                    <a href="{{ route('actividades') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
+                    <a href="{{ route('actividades.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
                 </form>
         </div>
     </div>
-
+@endrole
 @endsection

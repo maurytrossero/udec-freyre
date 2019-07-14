@@ -26,7 +26,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     UDEC
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -34,6 +35,37 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route ('actividades.index') }}">Actividades</a>
+                        </li>
+
+                        @role('admin')
+                        @can('users.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route ('users.index') }}">Usuarios</a>
+                            </li>
+                        @endcan
+                        @endrole
+
+                        @can('docentes.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route ('docentes.index') }}">Docentes</a>
+                            </li>
+                        @endcan
+
+                        @can('inscripciones.index')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route ('inscripciones.index') }}">Inscripciones</a>
+                            </li>
+                        @endcan
+
+                        @role('admin')
+                            @can('roles.index')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route ('roles.index') }}">Roles</a>
+                                </li>
+                            @endcan
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -65,7 +97,17 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
+
+                                    <a class="dropdown-item" href="{{ route('users.perfil-show',Auth::user()->id) }}">
+                                        Mi Perfil
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('users.perfil-show',Auth::user()->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
+
                             </li>
                         @endguest
                     </ul>

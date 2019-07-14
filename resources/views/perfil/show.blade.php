@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', "Usuario {$user->id}")
+@section('title', "Mis datos")
 
 @section('content')
-@role('admin')
+
     <div class="card">
-        <h4 class="card-header"> Detalles de Usuario</h4>
+        <h4 class="card-header"> Mis datos</h4>
         <div class="card-body">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -58,15 +58,17 @@
                             </tbody>
                         </table>
 
-                        <a href="{{ url ('/usuarios/')}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Regresar </a>
+                        <a href="{{ url ('/actividades/')}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Ver actividades </a>
 
-                        <a href="{{ route('users.edit',$user)}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Editar detalles </a>
+                        <a href="{{ route('users.perfil-edit', Auth::user()->id)}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Editar mis datos </a>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endrole
+
+
+
 
 @endsection

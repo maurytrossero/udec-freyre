@@ -12,7 +12,7 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-
+/*
         //Usuarios
         Permission::create([
             'name' =>'Navegar usuarios',
@@ -144,5 +144,6 @@ class PermissionsTableSeeder extends Seeder
             'slug' =>'inscripciones.destroy',
             'description' =>'Eliminar una inscripcion del sistema',
         ]);
+*/
     }
 }

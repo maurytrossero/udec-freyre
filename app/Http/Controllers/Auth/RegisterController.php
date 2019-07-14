@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rol2;
 use App\User;
 use App\Http\Controllers\Controller;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,10 +65,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        //CREACION DE UN USUARIO Y ASIGNACION POR DEFECTO A ROL ALUMNO
+
+        //$rol_user = Rol2::where('nombre_rol','alumno')->first();
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        $rol_user = Role::where('name','Alumno')->first();
+        $user->Roles()->attach($rol_user);
+
+        return $user;
+
     }
 }

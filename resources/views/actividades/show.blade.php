@@ -72,9 +72,10 @@
                         </table>
 
 
-                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-primary">
-                            <span class="oi oi-action-undo"></span>   Inscribir actividad</a>
-
+                        @if($actividad->getEstadoInscripcion() == 'abierta')
+                            <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-primary">
+                                <span class="oi oi-action-undo"></span>   Inscribir actividad</a>
+                        @endif
 
                         @role('admin')
                             <a href="{{ route('actividades.edit',$actividad)}}" class="btn btn-primary">

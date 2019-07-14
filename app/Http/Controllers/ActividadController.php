@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actividad;
+use App\Docente;
 use App\TipoActividad;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,6 @@ class ActividadController extends Controller
 {
     public function index()
     {
-
         $actividades = Actividad::all();
         $title = 'Listado de actividades';
 
@@ -22,19 +22,22 @@ class ActividadController extends Controller
         $actividad = Actividad::findOrFail($id);
         $tipo_actividad = TipoActividad::findOrFail($actividad->getTipoActividadId());
 
+        $docentes = $actividad->docentes()->get();
+
         return view('actividades.show')
             ->with('actividad',$actividad)
-            ->with('tipo_actividad',$tipo_actividad);
-
+            ->with('tipo_actividad',$tipo_actividad)
+            ->with('docentes', $docentes);
     }
 
     public function create()
     {
-
         $tipos_actividades = TipoActividad::all();
+        $docentes = Docente::all();
 
         return view('actividades.create')
-            ->with('tipos_actividades',$tipos_actividades);
+            ->with('tipos_actividades',$tipos_actividades)
+            ->with('docentes',$docentes);
     }
 
     public function store()
@@ -74,21 +77,30 @@ class ActividadController extends Controller
         if(request()->input('select_actividad_id')!='null')
         {
             $actividad->setTipoActividadId((request()->input('select_actividad_id')));
-
         }
 
         $actividad->save();
 
+        if(request()->input('select_docente_id')!='null')
+        {
+            $docente_id=request()->input('select_docente_id');
 
-        return redirect('actividades');
+            $actividad->docentes()->syncWithoutDetaching([$docente_id]);
+        }
+
+
+        return redirect('actividades')
+            ->with('info', 'Actividad creada con éxito');
     }
 
     public function edit(Actividad $actividad)
     {
         $tipos_actividades = TipoActividad::all();
+        $docentes = Docente::all();
 
-
-        return view('actividades.edit', ['actividad' => $actividad,'tipos_actividades'=> $tipos_actividades]);
+        return view('actividades.edit', ['actividad' => $actividad,
+            'tipos_actividades'=> $tipos_actividades,
+            'docentes'=> $docentes]);
     }
 
     public function update(Actividad $actividad)
@@ -115,17 +127,13 @@ class ActividadController extends Controller
 
         if(request()->input('select_actividad_id')!='null')
         {
-           // dd((request()->input('select_actividad_id')));
             $actividad->setTipoActividadId((request()->input('select_actividad_id')));
 
         }
 
         if(request()->input('select_estado_inscripcion')!='null')
         {
-            //dd((request()->input('select_estado_inscripcion')));
-
             $actividad->setEstadoInscripcion((request()->input('select_estado_inscripcion')));
-
         }
 
         $actividad->setNombre(request()->input('nombre'));
@@ -136,14 +144,23 @@ class ActividadController extends Controller
         $actividad->setDiaCursado(request()->input('dia_cursado'));
         $actividad->setHorario(request()->input('horario'));
 
+        if(request()->input('select_docente_id')!='null')
+        {
+            $docente_id=request()->input('select_docente_id');
+            $actividad->docentes()->syncWithoutDetaching([$docente_id]);
+
+        }
+
         $actividad->update();
 
-        return redirect()->route('actividades.show', ['actividad' => $actividad]);
+        return redirect()->route('actividades.show', ['actividad' => $actividad])
+            ->with('info', 'Actividad actualizada exitosamente');
     }
 
     public function destroy(Actividad $actividad)
     {
         $actividad->delete();
-        return redirect()->route('actividades');
+        return redirect()->route('actividades.index')
+            ->with('info', 'Actividad eliminada con éxito');
     }
 }

@@ -3,14 +3,13 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
+use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use HasRolesAndPermissions;
+    use Notifiable, HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','DNI', 'direccion', 'telefono',
+        'name', 'email', 'password', 'dni', 'direccion', 'telefono', 'rol_id',
     ];
 
     /**
@@ -39,8 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Inscripciones()
+    public function actividades()
     {
-        return $this->hasMany(Inscripcion::class);
+        return $this->BelongsToMany(Actividad::class, 'inscripciones')
+            ->withPivot('fecha_inscripcion','id');;
     }
+
 }

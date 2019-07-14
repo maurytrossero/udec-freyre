@@ -47,6 +47,11 @@
                                         <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
                                     @endrole
 
+                                    @if($actividad->getEstadoInscripcion() == 'abierta')
+                                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-primary">
+                                            <span class="oi oi-action-undo"></span>   Inscribir actividad</a>
+                                    @endif
+
                                     @role('admin')
                                         <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
                                             {{ csrf_field() }}

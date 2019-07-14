@@ -19,8 +19,11 @@ class DocenteController extends Controller
     public function show($id)
     {
         $docente = Docente::findOrFail($id);
+        $actividades = $docente->actividades()->get();
 
-        return view('docentes.show',compact('docente'));
+        return view('docentes.show')
+            ->with('docente',$docente)
+            ->with('actividades',$actividades);
     }
 
     public function create()
@@ -59,7 +62,8 @@ class DocenteController extends Controller
         $docente->save();
 
 
-        return redirect('docentes');
+        return redirect('docentes')
+            ->with('info', 'Docente registrado con éxito');;
     }
 
     public function edit(Docente $docente)
@@ -96,12 +100,14 @@ class DocenteController extends Controller
 
         $docente->update();
 
-        return redirect()->route('docentes.show', ['docente' => $docente]);
+        return redirect()->route('docentes.show', ['docente' => $docente])
+            ->with('info', 'Docente actualizado con éxito');;
     }
 
     public function destroy(Docente $docente)
     {
         $docente->delete();
-        return redirect()->route('docentes');
+        return redirect()->route('docentes.index')
+            ->with('info', 'Docente eliminado con éxito');;
     }
 }

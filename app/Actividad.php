@@ -96,8 +96,13 @@ class Actividad extends Model
 
 
     //RELACIÓN BASE DE DATOS
-    public function inscripciones()
+    public function users()
     {
-        return $this->hasMany(Inscripcion::class);
+        return $this->belongsToMany(User::class, 'inscripciones');
+    }
+
+    public function docentes()
+    {
+        return $this->belongsToMany(Docente::class);
     }
 }

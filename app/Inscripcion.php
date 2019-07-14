@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inscripcion extends Model
 {
-    protected $table = 'actividades';
+    protected $table = 'inscripciones';
 
     protected $fillable = ['fecha_inscripcion','user_id','actividades_id'];
 
@@ -26,15 +26,4 @@ class Inscripcion extends Model
         $this->fecha_inscripcion = $fecha_inscripcion;
     }
 
-
-    //Relacion con otras BD
-    public function user()
-    {
-        return $this->belongsTo(User::class,'user_id');
-    }
-
-    public function actividad()
-    {
-        return $this->belongsTo(Actividad::class,'actividades_id');
-    }
 }

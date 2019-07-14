@@ -53,9 +53,9 @@ class Docente extends Model
 
     //RELACIÓN BASE DE DATOS
 
-    public function actividad()
+    public function actividades()
     {
-        return $this->hasMany(Actividad::class);
+        return $this->belongsToMany(Actividad::class);
     }
 
 }

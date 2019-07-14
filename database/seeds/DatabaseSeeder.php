@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
             */
-            Schema::disableForeignKeyConstraints();
-            DB::table($table)->truncate();
-            Schema::enableForeignKeyConstraints();
+
+            DB::statement("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE");
+
 
 
         }

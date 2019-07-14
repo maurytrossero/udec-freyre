@@ -32,9 +32,16 @@ class DatabaseSeeder extends Seeder
     {
         foreach ($tables as $table)
         {
+            /*
             DB::statement('SET FOREIGN_KEY_CHECKS = 0');
             DB::table($table)->truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+            */
+            Schema::disableForeignKeyConstraints();
+            DB::table($table)->truncate();
+            Schema::enableForeignKeyConstraints();
+
+
         }
 
     }

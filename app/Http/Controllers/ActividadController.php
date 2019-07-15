@@ -11,7 +11,8 @@ class ActividadController extends Controller
 {
     public function index()
     {
-        $actividades = Actividad::all();
+        $actividades = Actividad::orderBy('nombre', 'asc')->get();
+        //$actividades->paginate(10);
         $title = 'Listado de actividades';
 
         return view('actividades.index', compact('title', 'actividades'));

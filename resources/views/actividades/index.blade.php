@@ -27,7 +27,6 @@
                     <table class="table table table-striped table-bordered table-condensed table-hover small">
                         <thead class="thead-dark">
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Descripcion</th>
                             <th scope="col">Opciones</th>
@@ -36,20 +35,21 @@
                         <tbody>
                         @foreach($actividades as $actividad)
                             <tr>
-                                <th scope="row">{{ $actividad->id }}</th>
                                 <td>{{ $actividad->getNombre() }}</td>
                                 <td>{{ $actividad->getDescripcion() }}</td>
                                 <td>
 
-                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
+                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link">
+                                        <span class="oi oi-eye"></span> </a>
 
                                     @role('admin')
-                                        <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
+                                        <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link">
+                                            <span class="oi oi-pencil"></span> </a>
                                     @endrole
 
                                     @if($actividad->getEstadoInscripcion() == 'abierta')
-                                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-primary">
-                                            <span class="oi oi-action-undo"></span>   Inscribir actividad</a>
+                                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-link">
+                                            <span class="oi oi-pin"></span>   Inscribir actividad</a>
                                     @endif
 
                                     @role('admin')

@@ -39,24 +39,28 @@
                                 <td>{{ $actividad->getDescripcion() }}</td>
                                 <td>
 
-                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link">
-                                        <span class="oi oi-eye"></span> </a>
 
-                                    @role('admin')
-                                        <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link">
-                                            <span class="oi oi-pencil"></span> </a>
-                                    @endrole
+                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link">
+                                        <span class="oi oi-eye"></span> Detalles</a>
 
                                     @if($actividad->getEstadoInscripcion() == 'abierta')
                                         <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-link">
-                                            <span class="oi oi-pin"></span>   Inscribir actividad</a>
+                                            <span class="oi oi-pin"></span> Inscribir</a>
                                     @endif
+
+
+                                    @role('admin')
+                                        <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link">
+                                            <span class="oi oi-pencil"></span> Editar</a>
+                                    @endrole
+
 
                                     @role('admin')
                                         <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
+                                            <a href="#" class="btn btn-link">
+                                                <span class="oi oi-trash"></span> Eliminar</a>
                                         </form>
                                     @endrole
 
@@ -69,9 +73,6 @@
             </div>
         </div>
 
-
-
-
     @else
         <p>No hay actividades Registradas</p>
     @endif
@@ -79,6 +80,5 @@
 
 @section('sidebar')
     @parent
-
 
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layout')
 
 @section('content')
 <div class="container">
@@ -13,13 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    Bienvenido a la página oficial de UDEC.
-                    A continuación podrá ver y/o inscribirse a nuestros Talleres, Elencos, Cursos y Capacitaciones
-                    que tenemos para ofrecerle.
-
-                    <a href="{{ route('actividades.index') }}" class="btn btn-link btn btn-block">Ver Actividades </a>
-
+                    <h3>
+                        Bienvenido a la página oficial de UDEC.
+                        A continuación podrá ver y/o inscribirse a nuestros Talleres, Elencos, Cursos y Capacitaciones
+                        que tenemos para ofrecerle.
+                    </h3>
                 </div>
             </div>
         </div>

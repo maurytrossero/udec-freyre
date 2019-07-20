@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 
@@ -62,48 +62,15 @@ Route::delete('/actividades/{actividad}', 'ActividadController@destroy')
     ->name('actividades.destroy');
 */
 
-//RUTAS DE DOCENTES
-/*
-Route::get('/docentes','DocenteController@index')
-    ->name('docentes');
+//RUTAS DE PROGRAMAS
+Route::get('programas/' , 'ProgramaController@index')
+    ->name('programas.index');
 
-Route::get('/docentes/{id}','DocenteController@show')
-    ->where('id', '[0-9]+')
-    ->name('docentes.show');
+//RUTAS DE PUNTOS DE ENCUENTROS
 
-Route::get('/docentes/nuevo','DocenteController@create')
-    ->name('docentes.create');
+Route::get('puntosencuentros/' , 'PuntoDeEncuentroController@index')
+    ->name('puntosdeencuentros.index');
 
-Route::post('/docentes/crear', 'DocenteController@store');
-
-Route::get('/docentes/{docente}/editar','DocenteController@edit')
-    ->name('docentes.edit');
-
-Route::put('/docentes/{docente}', 'DocenteController@update');
-
-Route::delete('/docentes/{docente}', 'DocenteController@destroy')
-    ->name('docentes.destroy');
-*/
-
-//RUTAS DE INSCRIPCIONES
-/*
-Route::get('/inscripciones','InscripcionController@index')
-    ->name('inscripciones');
-
-Route::get('/inscripciones/{id}','InscripcionController@show')
-    ->where('id', '[0-9]+')
-    ->name('inscripciones.show');
-
-Route::get('/inscripciones/{actividad}/nuevo','InscripcionController@create')
-    ->name('inscripciones.create');
-
-Route::post('/inscripciones/crear', 'InscripcionController@store')
-    ->name('inscripciones.confirmar');
-
-Route::delete('/inscripciones/{id}', 'InscripcionController@destroy')
-    ->name('inscripciones.destroy');
-
-*/
 
 Auth::routes();
 
@@ -138,10 +105,6 @@ Route::middleware(['auth'])->group(function() {
     Route::post('actividades/crear' , 'ActividadController@store')->name('actividades.store')
         ->middleware('can:actividades.create');
 
-    /*
-    Route::get('actividades/' , 'ActividadController@index')->name('actividades.index')
-        ->middleware('can:actividades.index');
-    */
     Route::get('actividades/create' , 'ActividadController@create')->name('actividades.create')
         ->middleware('can:actividades.create');
 
@@ -156,6 +119,21 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('actividades/{actividad}/edit' , 'ActividadController@edit')->name('actividades.edit')
         ->middleware('can:actividades.edit');
+
+    //Programas
+    /**/
+    Route::post('programas/store' , 'ProgramaController@store')->name('programas.store')
+        ->middleware('can:programas.create');
+
+    Route::get('programas/create' , 'ProgramaController@store')->name('programas.create')
+        ->middleware('can:programas.create');
+
+    //Puntos de Encuentros
+    Route::post('puntosdeencuentros/store' , 'PuntoDeEncuentroController@store')->name('puntosdeencuentros.store')
+        ->middleware('can:puntosdeencuentros.create');
+
+    Route::get('puntosdeencuentros/create' , 'PuntoDeEncuentroController@store')->name('puntosdeencuentros.create')
+        ->middleware('can:puntosdeencuentros.create');
 
 
     //Usuarios

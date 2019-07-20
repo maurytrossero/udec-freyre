@@ -14,10 +14,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->TruncateTables([
             'users',
+            'permissions',
             'tipos_actividades',
             'actividades',
             'docentes',
-            'inscripciones'
+            'inscripciones',
+            'programas',
+            'puntos_de_encuentros',
         ]);
 
         //$this->call(PermissionsTableSeeder::class);
@@ -25,6 +28,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DocentesSeeder::class);
         $this->call(TiposActividadesSeeder::class);
         $this->call(ActividadesSeeder::class);
+        $this->call(ProgramaSeeder::class);
+        $this->call(PuntoDeEncuentroSeeder::class;
     }
 
     public function TruncateTables(array $tables): void

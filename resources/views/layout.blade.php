@@ -1,176 +1,497 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>UDEC</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
 
-    <title>@yield('title') - UDEC</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css" integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Course Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{asset('styles/bootstrap4/bootstrap.min.css')}}">
+    <link href="{{asset('plugins/fontawesome-free-5.0.1/css/fontawesome-all.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/owl.theme.default.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('plugins/OwlCarousel2-2.2.1/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('styles/main_styles.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('styles/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css')}}" integrity="sha256-CNwnGWPO03a1kOlAsGaH5g8P3dFaqFqqGFV/1nkX5OU=" crossorigin="anonymous" />
+
+
 </head>
-
 <body>
 
-<header>
-    <!-- Fixed navbar -->
+<div class="super_container">
 
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#13547d;">
-        <a class="navbar-brand text-light" href="#">UDEC</a>
+    <!-- Header -->
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <header class="header d-flex flex-row">
+        <div class="header_content d-flex flex-row align-items-center">
+            <!-- Logo -->
+            <div class="logo_container">
+                <div class="logo">
+                    <img src="{{asset('images/logo.png')}}" alt="">
+                    <span></span>
+                </div>
+            </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <!-- Main Navigation -->
+            <nav class="main_nav_container">
+                <div class="main_nav">
+
+                    <ul class="main_nav_list">
+
+                        @guest
+                            <li class="main_nav_item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Acceder') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="main_nav_item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="main_nav_item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    <a class="dropdown-item" href="{{ route('users.perfil-show',Auth::user()->id) }}">
+                                        Mi Perfil
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('users.perfil-show',Auth::user()->id) }}" method="POST"
+                                          style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                </div>
+                            </li>
+                        @endguest
 
 
-                <!-- Item Login y acceso-->
+                        <li class="main_nav_item"><a href="{{ url ('/actividades/')}}">Actividades</a></li>
+
+                        @can('docentes.index')
+                            <li class="main_nav_item"><a href="{{ url ('/docentes/')}}">Docentes</a></li>
+                        @endcan
+
+                        @can('inscripciones.index')
+                            <li class="main_nav_item"><a href="{{ url ('/inscripciones/')}}">Inscripciones</a></li>
+                        @endcan
+                        @role('admin')
+                        @can('users.index')
+                            <li class="main_nav_item"><a href="{{ url ('/usuarios/')}}">Usuarios</a></li>
+                        @endcan
+                        @endrole
+
+                        @role('admin')
+                        @can('roles.index')
+                            <li class="main_nav_item"><a href="{{ url ('/roles/')}}">Roles</a></li>
+                        @endcan
+                        @endrole
+
+                        <li class="main_nav_item"><a href="{{ url ('/programas/')}}">Programas</a></li>
+
+                        <li class="main_nav_item"><a href="{{ url ('/puntosencuentros/')}}">Puntos de Encuentros</a></li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Navigation
+        <div class="header_side d-flex flex-row justify-content-center align-items-center">
+            <img src="images/phone-call.svg" alt="">
+            <span>+43 4566 7788 2457</span>
+        </div>
+        -->
+
+        <!-- Hamburger -->
+        <div class="hamburger_container">
+            <i class="fas fa-bars trans_200"></i>
+        </div>
+
+    </header>
+
+    <!-- Menu -->
+    <div class="menu_container menu_mm">
+
+        <!-- Menu Close Button -->
+        <div class="menu_close_container">
+            <div class="menu_close"></div>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="menu_inner menu_mm">
+            <div class="menu menu_mm">
+                <ul class="menu_list menu_mm">
+
+                    <!-- Opciones de login -->
 
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ route('login') }}">{{ __('Acceder') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                        <li class="menu_item menu_mm">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Acceder') }}</a>
                         </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-toggle="dropdown"
-                           aria-haspopup="true" aria-expanded="false" v-pre>
-                            <span class="oi oi-person"></span> {{ Auth::user()->name }}  <span class="caret"></span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                            <a class="dropdown-item " href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                        @if (Route::has('register'))
+                            <li class="menu_item menu_mm">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                            </li>
+                        @endif
+                    @else
+                        <li class="menu_item menu_mm dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="{{ route('users.perfil-show',Auth::user()->id) }}">
-                                Mi Perfil
-                            </a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    {{ __('Salir') }}
+                                </a>
 
-                            <form id="logout-form" action="{{ route('users.perfil-show',Auth::user()->id) }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
 
-                        </div>
-                    </li>
-                @endguest
+                                <a class="dropdown-item" href="{{ route('users.perfil-show',Auth::user()->id) }}">
+                                    Mi Perfil
+                                </a>
 
-                <!-- Item de ejemplo con subitems
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                -->
+                                <form id="logout-form" action="{{ route('users.perfil-show',Auth::user()->id) }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
 
-                <li class="nav-item active">
-                    <a class="nav-link text-light" href="{{ url ('/home/')}}">
-                        <span class="oi oi-home"></span> Home <span class="sr-only">(current)</span></a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url ('/actividades/')}}">
-                        <span class="oi oi-book"></span> Actividades <span class="sr-only">(current)</span></a>
-                </li>
-                @can('docentes.index')
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url ('/docentes/')}}">
-                             <span class="oi oi-badge"></span> Docentes <span class="sr-only">(current)</span></a>
-                    </li>
-                @endcan
-
-                @can('inscripciones.index')
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url ('/inscripciones/')}}">
-                             <span class="oi oi-aperture"></span> Inscripciones<span class="sr-only">(current)</span></a>
-                    </li>
-                @endcan
-
-
-                @role('admin')
-                @can('users.index')
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url ('/usuarios/')}}">
-                            <span class="oi oi-people"></span> Usuarios <span class="sr-only">(current)</span></a>
-                    </li>
-                @endcan
-                @endrole
-
-
-                @role('admin')
-                @can('roles.index')
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url ('/roles/')}}">
-                            <span class="oi oi-key"></span> Roles<span class="sr-only">(current)</span></a>
-                    </li>
-                @endcan
-                @endrole
-
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-</header>
-
-<!-- Begin page content -->
-<main role="main" class="container">
-    <div class="row mt-3">
-        <div class="col-12">
-            @if(session('info'))
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="alert alert-success">
-                                {{ session('info') }}
                             </div>
+                        </li>
+                    @endguest
+
+
+                    <li class="menu_item menu_mm"><a href="{{ url ('/actividades/')}}">Actividades</a></li>
+
+                    @can('inscripciones.index')
+                        <li class="menu_item menu_mm"><a href="{{ url ('/inscripciones/')}}">Inscripciones</a></li>
+                    @endcan
+
+                    @can('docentes.index')
+                        <li class="menu_item menu_mm"><a href="{{ url ('/docentes/')}}">Docentes</a></li>
+                    @endcan
+
+                    @role('admin')
+                        @can('users.index')
+                        <li class="menu_item menu_mm"><a href="{{ url ('/usuarios/')}}">Usuarios</a></li>
+                        @endcan
+                    @endrole
+
+                    @role('admin')
+                    @can('roles.index')
+                        <li class="menu_item menu_mm"><a href="{{ url ('/roles/')}}">Roles</a></li>
+                    @endcan
+                    @endrole
+
+                    <li class="menu_item menu_mm"><a href="{{ url ('/programas/')}}">Programas</a></li>
+
+                    <li class="menu_item menu_mm"><a href="{{ url ('/puntosdeencuentros/')}}">Puntos de Encuentros</a></li>
+
+                </ul>
+
+                <!-- Menu Social
+
+                <div class="menu_social_container menu_mm">
+                    <ul class="menu_social menu_mm">
+                        <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                        <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="menu_social_item menu_mm"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+                -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+
+        <!-- Hero Slider -->
+        <div class="hero_slider_container">
+            <div class="hero_slider owl-carousel">
+
+                <!-- Hero Slide -->
+                <div class="hero_slide">
+                    <div class="hero_slide_background" style="background-image:url({{asset('images/slider_background.jpg')}})"></div>
+                    <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+                        <div class="hero_slide_content text-center">
+                            <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut">Más de 40 <span>Actividades</span> disponibles</h1>
                         </div>
                     </div>
                 </div>
-            @endif
 
-            @yield('content')
+                <!-- Hero Slide -->
+                <div class="hero_slide">
+                    <div class="hero_slide_background" style="background-image:url({{asset('images/slider_background.jpg')}})"></div>
+                    <div class="hero_slide_container d-flex flex-column align-items-center justify-content-center">
+                        <div class="hero_slide_content text-center">
+                            <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOut"> <span>Inscribite</span> hoy mismo</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hero_slider_left hero_slider_nav trans_200"><span class="trans_200"> Ant... </span></div>
+            <div class="hero_slider_right hero_slider_nav trans_200"><span class="trans_200"> Sig... </span></div>
+        </div>
 
     </div>
-</main>
 
-<footer class="footer">
+    <div class="hero_boxes">
+        <div class="hero_boxes_inner">
+            <div class="container">
+                <div class="row">
 
-</footer>
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <img src="{{asset('images/earth-globe.svg')}}" class="svg" alt="">
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Actividades</h2>
+                                <a href="{{ url ('/actividades/')}}" class="hero_box_link">ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <img src="{{asset('images/books.svg')}}" class="svg" alt="">
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Inscripciones</h2>
+                                <a href="{{ url ('/inscripciones/')}}" class="hero_box_link">ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 hero_box_col">
+                        <div class="hero_box d-flex flex-row align-items-center justify-content-start">
+                            <img src="{{asset('images/professor.svg')}}" class="svg" alt="">
+                            <div class="hero_box_content">
+                                <h2 class="hero_box_title">Docentes</h2>
+                                <a href="{{ url ('/actividades/')}}" class="hero_box_link">ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <div class="row mt-3">
+            <div class="col-12">
+                @if(session('info'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="alert alert-success">
+                                    {{ session('info') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                @yield('content')
+
+            </div>
+    </main>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- Programas -->
+
+    <div class="services page_section">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>
+                            <a href="{{ url ('/programas/')}}">Programas</a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Puntos de encuentros -->
+
+    <div class="events page_section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>
+                            <a href="{{ url ('/puntosdeencuentros/')}}">Puntos de encuentros</a>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="footer">
+        <div class="container">
+
+
+
+            <!-- Footer Content -->
+
+            <div class="footer_content">
+                <div class="row">
+
+                    <!-- Footer Column - About -->
+                    <div class="col-lg-3 footer_col">
+
+                        <!-- Logo -->
+                        <div class="logo_container">
+                            <div class="logo">
+                                <img src="{{asset('images/logo.png')}}" alt="">
+                                <span>course</span>
+                            </div>
+                        </div>
+
+                        <p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
+
+                    </div>
+
+                    <!-- Footer Column - Menu -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_column_title">Menu</div>
+                        <div class="footer_column_content">
+                            <ul>
+                                <li class="footer_list_item"><a href="#">Home</a></li>
+                                <li class="footer_list_item"><a href="#">About Us</a></li>
+                                <li class="footer_list_item"><a href="courses.html">Courses</a></li>
+                                <li class="footer_list_item"><a href="news.html">News</a></li>
+                                <li class="footer_list_item"><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Footer Column - Usefull Links -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_column_title">Usefull Links</div>
+                        <div class="footer_column_content">
+                            <ul>
+                                <li class="footer_list_item"><a href="#">Testimonials</a></li>
+                                <li class="footer_list_item"><a href="#">FAQ</a></li>
+                                <li class="footer_list_item"><a href="#">Community</a></li>
+                                <li class="footer_list_item"><a href="#">Campus Pictures</a></li>
+                                <li class="footer_list_item"><a href="#">Tuitions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Footer Column - Contact -->
+
+                    <div class="col-lg-3 footer_col">
+                        <div class="footer_column_title">Contact</div>
+                        <div class="footer_column_content">
+                            <ul>
+                                <li class="footer_contact_item">
+                                    <div class="footer_contact_icon">
+                                        <img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                                    </div>
+                                    Blvd Libertad, 34 m05200 Arévalo
+                                </li>
+                                <li class="footer_contact_item">
+                                    <div class="footer_contact_icon">
+                                        <img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                                    </div>
+                                    0034 37483 2445 322
+                                </li>
+                                <li class="footer_contact_item">
+                                    <div class="footer_contact_icon">
+                                        <img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
+                                    </div>hello@company.com
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Copyright -->
+
+            <div class="footer_bar d-flex flex-column flex-sm-row align-items-center">
+                <div class="footer_copyright">
+					<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados | UDEC </a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
+                </div>
+                <div class="footer_social ml-sm-auto">
+                    <ul class="menu_social">
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li class="menu_social_item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+</div>
+
+<script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('styles/bootstrap4/popper.js')}}"></script>
+<script src="{{asset('styles/bootstrap4/bootstrap.min.js')}}"></script>
+<script src="{{asset('plugins/greensock/TweenMax.min.js')}}"></script>
+<script src="{{asset('plugins/greensock/TimelineMax.min.js')}}"></script>
+<script src="{{asset('plugins/scrollmagic/ScrollMagic.min.js')}}"></script>
+<script src="{{asset('plugins/greensock/animation.gsap.min.js')}}"></script>
+<script src="{{asset('plugins/greensock/ScrollToPlugin.min.js')}}"></script>
+<script src="{{asset('plugins/OwlCarousel2-2.2.1/owl.carousel.js')}}"></script>
+<script src="{{asset('plugins/scrollTo/jquery.scrollTo.min.js')}}"></script>
+<script src="{{asset('plugins/easing/easing.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
+
+
+
+
 </body>
 </html>

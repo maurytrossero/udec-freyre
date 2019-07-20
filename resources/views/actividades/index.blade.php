@@ -5,9 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
-            <div class="d-flex justify-content-between align-items-end mb-2">
-                <h4 class="pb-1">{{ $title }}</h4>
-            </div>
+
             <div class="d-flex justify-content-between align-items-end mb-2">
                 @role('admin')
                     @can('actividades.create')
@@ -21,57 +19,49 @@
 
     @if($actividades->IsNotEmpty())
 
-        <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table table-striped table-bordered table-condensed table-hover small">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">Opciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($actividades as $actividad)
-                            <tr>
-                                <td>{{ $actividad->getNombre() }}</td>
-                                <td>{{ $actividad->getDescripcion() }}</td>
-                                <td>
+        <!-- Popular -->
+
+        <div class="popular page_section" >
+            <div class="container" >
+                <div class="row">
+                    <div class="col">
+                        <div class="section_title text-center">
+                            <h1>Actividades</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row course_boxes ">
+
+                    <!-- Popular Course Item -->
+
+                    @foreach($actividades as $actividad)
 
 
-                                    <a href="{{ route('actividades.show', $actividad) }}" class="btn btn-link">
-                                        <span class="oi oi-eye"></span> Detalles</a>
+                        <div class="col-lg-4 course_box">
+                            <div class="card">
+                                <img class="card-img-top" src="images/course_1.jpg" alt="https://unsplash.com/@kellybrito">
+                                <div class="card-body text-center">
+                                    <div class="card-title"><a href="{{ route('actividades.show', $actividad) }}">
+                                            {{ $actividad->getNombre() }}</a></div>
+                                    <div class="card-text">{{ $actividad->getDescripcion() }}</div>
+                                </div>
+                                <div class="price_box d-flex flex-row align-items-center">
+                                    <div class="course_author_image">
+                                        <img src="images/author.jpg" alt="https://unsplash.com/@mehdizadeh">
+                                    </div>
+                                    <div class="course_author_name">Michael Smith, <span>Docente</span></div>
+                                    <div class="course_price d-flex flex-column align-items-center justify-content-center"
+                                         style="background-color:#13547d;"><span>{{ $actividad->getCostoMensual() }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
 
-                                    @if($actividad->getEstadoInscripcion() == 'abierta')
-                                        <a href="{{ route('inscripciones.create', $actividad) }}" class="btn btn-link">
-                                            <span class="oi oi-pin"></span> Inscribir</a>
-                                    @endif
-
-
-                                    @role('admin')
-                                        <a href="{{ route('actividades.edit',  $actividad) }}" class="btn btn-link">
-                                            <span class="oi oi-pencil"></span> Editar</a>
-                                    @endrole
-
-
-                                    @role('admin')
-                                        <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <a href="#" class="btn btn-link">
-                                                <span class="oi oi-trash"></span> Eliminar</a>
-                                        </form>
-                                    @endrole
-
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
                 </div>
             </div>
         </div>
+
 
     @else
         <p>No hay actividades Registradas</p>

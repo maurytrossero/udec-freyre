@@ -4,6 +4,9 @@
 
 @section('content')
 
+
+
+
     <div class="card">
         <h4 class="card-header"> Detalles de actividad</h4>
         <div class="card-body">

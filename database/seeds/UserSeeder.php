@@ -1,5 +1,6 @@
 <?php
 
+use App\Rol2;
 use App\User;
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Role;
@@ -45,7 +46,7 @@ class UserSeeder extends Seeder
         $user->direccion = "San Martin 928";
         $user->telefono = "3564607490";
         $user->save();
-        $user->roles()->attach($rol_user);
+        $user->Roles()->attach($rol_user);
 
 
         $rol_user = Role::where('name','Admin')->first();
@@ -57,7 +58,7 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->roles()->attach($rol_user);
+        $user->Roles()->attach($rol_user);
 
         $rol_user = Role::where('name','Alumno')->first();
         $user = new User();
@@ -68,7 +69,7 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->roles()->attach($rol_user);
+        $user->Roles()->attach($rol_user);
 
         $rol_user = Role::where('name','Admin')->first();
         $user = new User();
@@ -79,7 +80,7 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->roles()->attach($rol_user);
+        $user->Roles()->attach($rol_user);
 
     }
 }

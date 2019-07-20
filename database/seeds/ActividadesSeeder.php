@@ -21,7 +21,7 @@ class ActividadesSeeder extends Seeder
         'costo_mensual'=>'500',
         'dia_cursado'=>'Miércoles',
         'horario'=>'14:00',
-        'estado_inscripcion'=>'cerrada',
+        'estado_inscripcion'=>'abierta',
         'tipo_actividad_id' => '1',
         ]);
 
@@ -33,7 +33,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -45,7 +45,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -57,7 +57,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -69,7 +69,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -81,7 +81,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -93,7 +93,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -105,7 +105,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -117,7 +117,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -129,7 +129,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -141,7 +141,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
 
@@ -153,7 +153,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Martes',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '1',
         ]);
         //Talleres Musicales
@@ -165,7 +165,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -177,7 +177,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -189,7 +189,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -201,7 +201,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -213,7 +213,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -225,7 +225,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -237,7 +237,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -249,7 +249,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -261,7 +261,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '2',
         ]);
 
@@ -274,7 +274,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '3',
         ]);
 
@@ -286,7 +286,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '3',
         ]);
 
@@ -298,7 +298,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '3',
         ]);
 
@@ -311,7 +311,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -323,7 +323,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -335,7 +335,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -347,7 +347,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -359,7 +359,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -371,7 +371,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '4',
         ]);
 
@@ -384,7 +384,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -396,7 +396,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -408,7 +408,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -420,7 +420,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -432,7 +432,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -444,7 +444,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -456,7 +456,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -468,7 +468,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -480,7 +480,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -492,7 +492,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -504,7 +504,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -516,7 +516,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -528,7 +528,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '5',
         ]);
 
@@ -541,7 +541,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
 
@@ -553,7 +553,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
 
@@ -565,7 +565,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
 
@@ -577,7 +577,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
 
@@ -589,7 +589,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
 
@@ -601,7 +601,7 @@ class ActividadesSeeder extends Seeder
             'costo_mensual'=>'300',
             'dia_cursado'=>'Miércoles',
             'horario'=>'14:00',
-            'estado_inscripcion'=>'cerrada',
+            'estado_inscripcion'=>'abierta',
             'tipo_actividad_id' => '6',
         ]);
     }

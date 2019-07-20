@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TiposActividadesSeeder::class);
         $this->call(ActividadesSeeder::class);
         $this->call(ProgramaSeeder::class);
-        $this->call(PuntoDeEncuentroSeeder::class;
+        $this->call(PuntoDeEncuentroSeeder::class);
     }
 
     public function TruncateTables(array $tables): void

@@ -210,7 +210,7 @@
 
                     <li class="menu_item menu_mm"><a href="{{ url ('/programas/')}}">Programas</a></li>
 
-                    <li class="menu_item menu_mm"><a href="{{ url ('/puntosdeencuentros/')}}">Puntos de Encuentros</a></li>
+                    <li class="menu_item menu_mm"><a href="{{ url ('/puntosencuentros/')}}">Puntos de Encuentros</a></li>
 
                 </ul>
 

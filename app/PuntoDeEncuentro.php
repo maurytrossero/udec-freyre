@@ -35,11 +35,11 @@ class PuntoDeEncuentro extends Model
     }
 
     public function getFechaRealizacion() {
-        return $this->fecha_realizacion;
+        return $this->fecha_realización;
     }
 
-    public function setFechaRealizacion($fecha_realizacion) {
-        $this->fecha_realizacion = $fecha_realizacion;
+    public function setFechaRealizacion($fecha_realización) {
+        $this->fecha_realización = $fecha_realización;
     }
 
     public function getLugar() {

@@ -34,12 +34,10 @@ class PuntoDeEncuentroController extends Controller
     {
         $data = request()->validate([
             'nombre' => 'required',
-            'descripcion' => 'required',
             'fecha_realización' => 'required',
         ],
             [
                 'nombre.required' => 'El nombre es obligatorio',
-                'descripcion.required' => 'La descripcion es obligatoria',
                 'fecha_realización.required' => 'La fecha es obligatoria',
             ]);
 
@@ -74,11 +72,9 @@ class PuntoDeEncuentroController extends Controller
 
         $data = request()->validate([
             'nombre' => 'required',
-            'descripcion' => 'required',
         ],
             [
                 'nombre.required' => 'El nombre es obligatorio',
-                'descripcion.required' => 'La descripcion es obligatoria',
             ]);
 
         $puntodeencuentro->setNombre(request()->input('nombre'));

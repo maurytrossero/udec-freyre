@@ -7,6 +7,7 @@
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DocenteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DocenteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgramaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgramaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PuntoDeEncuentroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PuntoDeEncuentroController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PuntoDeEncuentro.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PuntoDeEncuentro.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2013_05_07_022536_create_roles2_table.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_30_144916_create_actividades_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_30_144916_create_actividades_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_08_035518_create_rol2_user_table.php" beforeDir="false" />
@@ -50,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PuntoDeEncuentroController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-77">
@@ -59,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/PuntoDeEncuentro.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-270">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+            <state relative-caret-position="163">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -86,7 +87,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_04_30_145021_create_inscripciones_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_01_160054_create_tipo_actividad_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_30_144915_create_tipo_actividades_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_30_144915_create_tipos_actividades_table.php" />
@@ -137,6 +137,7 @@
         <option value="$PROJECT_DIR$/database/seeds/ActividadesSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/layout.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PuntoDeEncuentroController.php" />
+        <option value="$PROJECT_DIR$/app/PuntoDeEncuentro.php" />
       </list>
     </option>
   </component>
@@ -273,12 +274,6 @@
             <path>
               <item name="udec_heroku" type="b2602c69:ProjectViewProjectNode" />
               <item name="udec_heroku" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="seeds" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="udec_heroku" type="b2602c69:ProjectViewProjectNode" />
-              <item name="udec_heroku" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -357,17 +352,18 @@
       <workItem from="1563064772663" duration="10467000" />
       <workItem from="1563154023642" duration="3034000" />
       <workItem from="1563584416054" duration="2322000" />
-      <workItem from="1564424400092" duration="1478000" />
+      <workItem from="1564424400092" duration="1734000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176680000" />
+    <option name="totallyTimeSpent" value="176936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1293" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29350442" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17161188" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -787,13 +783,6 @@
         <state relative-caret-position="-495" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/PuntoDeEncuentro.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-270">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_07_19_145718_create_puntos_de_encuentros_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -812,6 +801,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-77">
           <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/PuntoDeEncuentro.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>

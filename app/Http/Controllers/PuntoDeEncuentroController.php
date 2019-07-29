@@ -11,7 +11,7 @@ class PuntoDeEncuentroController extends Controller
     public function index()
     {
 
-        $puntosdeencuentros = PuntoDeEncuentro::all();
+        $puntosdeencuentros = PuntoDeEncuentro::orderBy('fecha_realización', 'asc')->get();
         $title= 'Listado de puntos de encuentros';
 
         return view('puntosdeencuentros.index', compact('title', 'puntosdeencuentros'));

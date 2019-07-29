@@ -80,6 +80,15 @@ class ActividadController extends Controller
             $actividad->setTipoActividadId((request()->input('select_actividad_id')));
         }
 
+
+        if(request()->hasFile('imagen'))
+        {
+            $archivo = request()->file('imagen');
+            $name = time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/imagenes/', $name);
+            $actividad->setImagen($name);
+        }
+
         $actividad->save();
 
         if(request()->input('select_docente_id')!='null')
@@ -150,6 +159,14 @@ class ActividadController extends Controller
             $docente_id=request()->input('select_docente_id');
             $actividad->docentes()->syncWithoutDetaching([$docente_id]);
 
+        }
+
+        if(request()->hasFile('imagen'))
+        {
+            $archivo = request()->file('imagen');
+            $name = time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/imagenes/', $name);
+            $actividad->setImagen($name);
         }
 
         $actividad->update();

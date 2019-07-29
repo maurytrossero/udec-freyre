@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Docente;
+use App\User;
 use Illuminate\Http\Request;
 
 class DocenteController extends Controller
 {
     public function index()
     {
-
         $docentes = Docente::all();
         $title= 'Listado de docentes';
 
@@ -42,7 +42,6 @@ class DocenteController extends Controller
                 'dni.numeric' => 'El DNI debe contener solo números',
                 'dni.required' => 'Debe ingresar el DNI del docente',
                 'dni.min' => 'El DNI debe contener como mínimo 6 numeros',
-
             ]);
 
         $docente = new Docente();

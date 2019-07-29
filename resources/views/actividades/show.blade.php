@@ -85,6 +85,14 @@
                                 <span class="oi oi-action-undo"></span>  Editar detalles </a>
                         @endrole
 
+                        @role('admin')
+                        <form action="{{ route('actividades.destroy',  $actividad) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Actividad</span> </button>
+                        </form>
+                        @endrole
+
                         <a href="{{ route('actividades.index') }}" class="btn btn-primary">
                             <span class="oi oi-action-undo"></span>   Regresar </a>
 

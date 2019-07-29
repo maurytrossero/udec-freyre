@@ -4,24 +4,25 @@ namespace App\Http\Controllers;
 
 use App\PuntoDeEncuentro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PuntoDeEncuentroController extends Controller
 {
     public function index()
     {
 
-        $puntosencuentros = PuntoDeEncuentro::all();
+        $puntosdeencuentros = PuntoDeEncuentro::all();
         $title= 'Listado de puntos de encuentros';
 
-        return view('puntosdeencuentros.index', compact('title', 'puntosencuentros'));
+        return view('puntosdeencuentros.index', compact('title', 'puntosdeencuentros'));
     }
 
     public function show($id)
     {
-        $puntoencuentro = PuntoDeEncuentro::findOrFail($id);
+        $puntodeencuentro = PuntoDeEncuentro::findOrFail($id);
 
         return view('puntosdeencuentros.show')
-            ->with('puntoencuentro',$puntoencuentro);
+            ->with('puntodeencuentro',$puntodeencuentro);
     }
 
     public function create()
@@ -34,32 +35,41 @@ class PuntoDeEncuentroController extends Controller
         $data = request()->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
+            'fecha_realización' => 'required',
         ],
             [
                 'nombre.required' => 'El nombre es obligatorio',
                 'descripcion.required' => 'La descripcion es obligatoria',
+                'fecha_realización.required' => 'La fecha es obligatoria',
             ]);
 
         $puntoencuentro = new PuntoDeEncuentro();
         $puntoencuentro->setNombre(request()->input('nombre'));
         $puntoencuentro->setDescripcion(request()->input('descripcion'));
-        $puntoencuentro->setFechaRealizacion(request()->input('fecha_realizacion'));
+        $puntoencuentro->setFechaRealizacion(request()->input('fecha_realización'));
 
-        $puntoencuentro->setImagen(request()->input('imagen'));
+
+
+        if(request()->hasFile('imagen'))
+        {
+            $archivo = request()->file('imagen');
+            $name = time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/imagenes/', $name);
+            $puntoencuentro->setImagen($name);
+        }
 
         $puntoencuentro->save();
 
-
-        return redirect('puntosdeencuentros.index')
-            ->with('info', 'Punto De Encuentro registrado con éxito');;
+        return redirect()->route('puntosdeencuentros.index')
+            ->with('info', 'Punto De Encuentro registrado con éxito');
     }
 
-    public function edit(PuntoDeEncuentro $puntoencuentro)
+    public function edit(PuntoDeEncuentro $puntodeencuentro)
     {
-        return view('puntosdeencuentros.edit', ['puntoencuentro' => $puntoencuentro]);
+        return view('puntosdeencuentros.edit', ['puntodeencuentro' => $puntodeencuentro]);
     }
 
-    public function update(PuntoDeEncuentro $puntoencuentro)
+    public function update(PuntoDeEncuentro $puntodeencuentro)
     {
 
         $data = request()->validate([
@@ -71,21 +81,34 @@ class PuntoDeEncuentroController extends Controller
                 'descripcion.required' => 'La descripcion es obligatoria',
             ]);
 
-        $puntoencuentro->setNombre(request()->input('nombre'));
-        $puntoencuentro->setDescripcion(request()->input('descripcion'));
-        $puntoencuentro->setFechaRealizacion(request()->input('fecha_realizacion'));
+        $puntodeencuentro->setNombre(request()->input('nombre'));
+        $puntodeencuentro->setDescripcion(request()->input('descripcion'));
 
-        $puntoencuentro->setImagen(request()->input('imagen'));
+        if(request()->input('fecha_realización')!=null)
+        {
+            $puntodeencuentro->setFechaRealizacion(request()->input('fecha_realización'));
 
-        $puntoencuentro->update();
+        }
 
-        return redirect()->route('puntosdeencuentros.show', ['puntoencuentro' => $puntoencuentro])
-            ->with('info', 'Punto De Encuentro actualizado con éxito');;
+        if(request()->hasFile('imagen'))
+        {
+            $archivo = request()->file('imagen');
+            $name = time().$archivo->getClientOriginalName();
+            $archivo->move(public_path().'/imagenes/', $name);
+            $puntodeencuentro->setImagen($name);
+
+        }
+
+
+        $puntodeencuentro->update();
+
+        return redirect()->route('puntosdeencuentros.index')
+            ->with('info', 'Punto De Encuentro actualizado con éxito');
     }
 
-    public function destroy(PuntoDeEncuentro $puntoencuentro)
+    public function destroy(PuntoDeEncuentro $puntodeencuentro)
     {
-        $puntoencuentro->delete();
+        $puntodeencuentro->delete();
         return redirect()->route('puntosdeencuentros.index')
             ->with('info', 'Punto De Encuentro eliminado con éxito');;
     }

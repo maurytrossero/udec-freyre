@@ -14,7 +14,7 @@
             @endif
 
 
-                <form method="POST" action="{{ url("/actividades/{$actividad->id}") }}">
+                <form method="POST" action="{{ url("/actividades/{$actividad->id}") }} " enctype="multipart/form-data">
 
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
@@ -143,6 +143,15 @@
                         @endif
                     </div>
 
+                    <div class="form-group">
+                        <label for="imagen" >Imagen: </label>
+                        <input type="file" name="imagen" accept=".pdf,.jpg,.png" multiple>
+                    </div>
+                    @if ($errors->has('imagen'))
+                        <div class="alert alert-danger">
+                            <p>{{ $errors->first('imagen') }}</p>
+                        </div>
+                    @endif
 
                     <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Actualizar Actividad</button>
                     <a href="{{ route('actividades.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>

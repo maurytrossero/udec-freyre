@@ -144,6 +144,8 @@
     <footer class="footer">
         <div class="container">
 
+
+
             <!-- Footer Content -->
 
             <div class="footer_content">
@@ -155,12 +157,15 @@
                         <!-- Logo -->
                         <div class="logo_container">
                             <div class="logo">
-                                <img src="images/logo.png" alt="">
-                                <span>course</span>
+                                <img src="{{asset('images/logo.png')}}" alt="">
+                                <span>udec</span>
                             </div>
                         </div>
 
-                        <p class="footer_about_text">In aliquam, augue a gravida rutrum, ante nisl fermentum nulla, vitae tempor nisl ligula vel nunc. Proin quis mi malesuada, finibus tortor fermentum, tempor lacus.</p>
+                        <p class="footer_about_text">
+                            Se trata de una propuesta que tiene como objetivo formar a las
+                            personas para la generación de empleo e integrar comunitariamente.
+                        </p>
 
                     </div>
 
@@ -170,52 +175,50 @@
                         <div class="footer_column_title">Menu</div>
                         <div class="footer_column_content">
                             <ul>
-                                <li class="footer_list_item"><a href="#">Home</a></li>
-                                <li class="footer_list_item"><a href="#">About Us</a></li>
-                                <li class="footer_list_item"><a href="courses.html">Courses</a></li>
-                                <li class="footer_list_item"><a href="news.html">News</a></li>
-                                <li class="footer_list_item"><a href="contact.html">Contact</a></li>
+                                <li class="footer_list_item"><a href="{{ url ('/home/')}}">Home</a></li>
+                                <li class="footer_list_item"><a href="{{ url ('/actividades/')}}">Actividades</a></li>
+                                <li class="footer_list_item"><a href="{{ url ('/programas/')}}">Programas</a></li>
+                                <li class="footer_list_item"><a href="{{ url ('/puntosdeencuentros/')}}">Puntos de Encuentro</a></li>
                             </ul>
                         </div>
                     </div>
 
-                    <!-- Footer Column - Usefull Links -->
+                    <!-- Footer Column - Usefull Links
 
                     <div class="col-lg-3 footer_col">
-                        <div class="footer_column_title">Usefull Links</div>
+                        <div class="footer_column_title">Links</div>
                         <div class="footer_column_content">
                             <ul>
-                                <li class="footer_list_item"><a href="#">Testimonials</a></li>
-                                <li class="footer_list_item"><a href="#">FAQ</a></li>
-                                <li class="footer_list_item"><a href="#">Community</a></li>
-                                <li class="footer_list_item"><a href="#">Campus Pictures</a></li>
-                                <li class="footer_list_item"><a href="#">Tuitions</a></li>
+                                <li class="footer_list_item"><a href="#">Actividades</a></li>
+                                <li class="footer_list_item"><a href="#">Programas</a></li>
+                                <li class="footer_list_item"><a href="#">Puntos de Encuentro</a></li>
                             </ul>
                         </div>
                     </div>
+                    -->
 
                     <!-- Footer Column - Contact -->
 
                     <div class="col-lg-3 footer_col">
-                        <div class="footer_column_title">Contact</div>
+                        <div class="footer_column_title">Contacto</div>
                         <div class="footer_column_content">
                             <ul>
                                 <li class="footer_contact_item">
                                     <div class="footer_contact_icon">
                                         <img src="images/placeholder.svg" alt="https://www.flaticon.com/authors/lucy-g">
                                     </div>
-                                    Blvd Libertad, 34 m05200 Arévalo
+                                    Bv 25 de Mayo 728
                                 </li>
                                 <li class="footer_contact_item">
                                     <div class="footer_contact_icon">
                                         <img src="images/smartphone.svg" alt="https://www.flaticon.com/authors/lucy-g">
                                     </div>
-                                    0034 37483 2445 322
+                                    03564 15560500
                                 </li>
                                 <li class="footer_contact_item">
                                     <div class="footer_contact_icon">
                                         <img src="images/envelope.svg" alt="https://www.flaticon.com/authors/lucy-g">
-                                    </div>hello@company.com
+                                    </div>udec@freyre.gov.ar
                                 </li>
                             </ul>
                         </div>

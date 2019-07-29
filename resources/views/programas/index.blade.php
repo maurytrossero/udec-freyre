@@ -45,6 +45,23 @@
                     </div>
 
                 </div>
+
+
+                <div>
+
+                    @role('admin')
+                    <a href="{{ route('programas.edit',  $programa) }}" class="btn btn-link">
+                        <span class="oi oi-pencil"></span> Editar Programa </a>
+                    @endrole
+
+                    @role('admin')
+                    <form action="{{ route('programas.destroy',  $programa) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Programa</span> </button>
+                    </form>
+                    @endrole
+                </div>
                 @endforeach
             </div>
         </div>

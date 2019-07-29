@@ -24,6 +24,7 @@ class CreateActividadesTable extends Migration
             $table->string('dia_cursado');
             $table->string('horario');
             $table->string('estado_inscripcion');
+            $table->string('imagen')->nullable();
 
             $table->unsignedBigInteger('tipo_actividad_id');
             $table->foreign('tipo_actividad_id')->references('id')->on('tipos_actividades');

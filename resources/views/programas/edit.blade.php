@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', "Crear Programa")
+@section('title', "Editar Programa")
 
 @section('content')
     @role('admin')
     <div class="card">
-        <h4 class="card-header"> Crear programa nuevo</h4>
+        <h4 class="card-header"> Editar programa</h4>
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -14,13 +14,15 @@
             @endif
 
 
-            <form method="POST" action="{{ url('/programas/crear') }}" enctype="multipart/form-data">
-                {!! csrf_field() !!}
+            <form method="POST" action="{{ url("/programas/{$programa->id}")}}" enctype="multipart/form-data">
+
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
 
                 <div class="form-group">
                     <label for="nombre" >Nombre: </label>
-                    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Programa..."
-                           value="{{ old('nombre')}}">
+                    <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Punto de encuentro en..."
+                           value="{{ old('nombre',$programa->getNombre())}}">
                 </div>
                 @if ($errors->has('nombre'))
                     <div class="alert alert-danger">
@@ -30,8 +32,8 @@
 
                 <div class="form-group">
                     <label for="descripcion" >Descripcion: </label>
-                    <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="El programa x ..."
-                           value="{{ old('descripcion')}}">
+                    <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="La actividad consiste en..."
+                           value="{{ old('descripcion',$programa->getDescripcion())}}">
                 </div>
                 @if ($errors->has('descripcion'))
                     <div class="alert alert-danger">
@@ -40,7 +42,7 @@
                 @endif
 
 
-                <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Crear programa</button>
+                <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Actualizar programa</button>
                 <a href="{{ route('programas.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
         </div>

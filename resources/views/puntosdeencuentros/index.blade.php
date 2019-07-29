@@ -19,7 +19,7 @@
     </div>
 
 
-    @if($puntosencuentros->IsNotEmpty())
+    @if($puntosdeencuentros->IsNotEmpty())
 
         <div class="events page_section">
             <div class="container">
@@ -35,34 +35,61 @@
                 <div class="event_items">
 
                     <!-- Event Item -->
-                    @foreach($puntosencuentros as $puntoencuentro)
+                    @foreach($puntosdeencuentros as $puntodeencuentro)
                     <div class="row event_item">
                         <div class="col">
                             <div class="row d-flex flex-row align-items-end">
 
                                 <div class="col-lg-2 order-lg-1 order-2">
                                     <div class="event_date d-flex flex-column align-items-center justify-content-center">
-                                        <div class="event_day">{{ \Carbon\Carbon::parse($puntoencuentro->getFechaRealizacion())->format('d')}}</div>
-                                        <div class="event_month">{{ \Carbon\Carbon::parse($puntoencuentro->getFechaRealizacion())->format('m')}}</div>
+                                        <div class="event_day">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('d')}}</div>
+                                        <div class="event_month">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('m')}}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 order-lg-2 order-3">
                                     <div class="event_content">
-                                        <div class="event_name"><a class="trans_200" href="#">{{ $puntoencuentro->getNombre()}}</a></div>
-                                        <div class="event_location">{{ $puntoencuentro->getLugar()}}</div>
-                                        <p>{{ $puntoencuentro->getDescripcion()}}</p>
+                                        <div class="event_name"><a class="trans_200" href="#">{{ $puntodeencuentro->getNombre()}}</a></div>
+                                        <div class="event_location">{{ $puntodeencuentro->getLugar()}}</div>
+                                        <p>{{ $puntodeencuentro->getDescripcion()}}</p>
                                     </div>
                                 </div>
 
+                                @if($puntodeencuentro->getImagen()==null)
                                 <div class="col-lg-4 order-lg-3 order-1">
                                     <div class="event_image">
                                         <img src="{{asset('images/event_1.jpg')}}" alt="https://unsplash.com/@theunsteady5">
                                     </div>
                                 </div>
+                                @else
+                                    <div class="col-lg-4 order-lg-3 order-1">
+                                        <div class="event_image">
+                                            <img src="imagenes/{{$puntodeencuentro->getImagen()}}" alt="https://unsplash.com/@theunsteady5">
+                                        </div>
+                                    </div>
+                                @endif
+
+
+
 
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+
+                        @role('admin')
+                        <a href="{{ route('puntosdeencuentros.edit',  $puntodeencuentro) }}" class="btn btn-link">
+                            <span class="oi oi-pencil"></span> Editar Punto de Encuentro </a>
+                        @endrole
+
+                        @role('admin')
+                        <form action="{{ route('puntosdeencuentros.destroy',  $puntodeencuentro) }}" method="POST">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Punto de Encuentro</span> </button>
+                        </form>
+                        @endrole
                     </div>
                     @endforeach
 

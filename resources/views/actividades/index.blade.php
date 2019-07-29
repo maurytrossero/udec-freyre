@@ -40,7 +40,11 @@
 
                         <div class="col-lg-4 course_box">
                             <div class="card">
+                                @if($actividad->getImagen()==null)
                                 <img class="card-img-top" src="images/course_1.jpg" alt="https://unsplash.com/@kellybrito">
+                                @else
+                                    <img class="card-img-top" src="imagenes/{{$actividad->getImagen()}}" alt="https://unsplash.com/@kellybrito">
+                                @endif
                                 <div class="card-body text-center">
                                     <div class="card-title"><a href="{{ route('actividades.show', $actividad) }}">
                                             {{ $actividad->getNombre() }}</a></div>

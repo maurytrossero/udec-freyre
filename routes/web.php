@@ -68,7 +68,7 @@ Route::get('programas/' , 'ProgramaController@index')
 
 //RUTAS DE PUNTOS DE ENCUENTROS
 
-Route::get('puntosencuentros/' , 'PuntoDeEncuentroController@index')
+Route::get('puntosdeencuentros/' , 'PuntoDeEncuentroController@index')
     ->name('puntosdeencuentros.index');
 
 
@@ -111,29 +111,48 @@ Route::middleware(['auth'])->group(function() {
     Route::put('actividades/{actividad}' , 'ActividadController@update')->name('actividades.update')
         ->middleware('can:actividades.edit');
 
+    Route::get('actividades/{actividad}/edit' , 'ActividadController@edit')->name('actividades.edit')
+        ->middleware('can:actividades.edit');
+
     Route::get('actividades/ver/{actividad}' , 'ActividadController@show')->name('actividades.show')
         ->middleware('can:actividades.show');
 
     Route::delete('actividades/eliminar/{actividad}' , 'ActividadController@destroy')->name('actividades.destroy')
         ->middleware('can:actividades.destroy');
 
-    Route::get('actividades/{actividad}/edit' , 'ActividadController@edit')->name('actividades.edit')
-        ->middleware('can:actividades.edit');
 
     //Programas
     /**/
     Route::post('programas/store' , 'ProgramaController@store')->name('programas.store')
         ->middleware('can:programas.create');
 
-    Route::get('programas/create' , 'ProgramaController@store')->name('programas.create')
+    Route::get('programas/create' , 'ProgramaController@create')->name('programas.create')
         ->middleware('can:programas.create');
 
+    Route::put('programas/{programa}' , 'ProgramaController@update')->name('programas.update')
+        ->middleware('can:programas.edit');
+
+    Route::get('programas/{programa}/edit' , 'ProgramaController@edit')->name('programas.edit')
+        ->middleware('can:programas.edit');
+
+    Route::delete('programas/eliminar/{programa}' , 'ProgramaController@destroy')->name('programas.destroy')
+        ->middleware('can:programas.destroy');
+
     //Puntos de Encuentros
-    Route::post('puntosdeencuentros/store' , 'PuntoDeEncuentroController@store')->name('puntosdeencuentros.store')
+    Route::post('puntosdeencuentros/crear' , 'PuntoDeEncuentroController@store')->name('puntosdeencuentros.store')
         ->middleware('can:puntosdeencuentros.create');
 
-    Route::get('puntosdeencuentros/create' , 'PuntoDeEncuentroController@store')->name('puntosdeencuentros.create')
+    Route::get('puntosdeencuentros/create' , 'PuntoDeEncuentroController@create')->name('puntosdeencuentros.create')
         ->middleware('can:puntosdeencuentros.create');
+
+    Route::put('puntosdeencuentros/{puntodeencuentro}' , 'PuntoDeEncuentroController@update')->name('puntosdeencuentros.update')
+        ->middleware('can:puntosdeencuentros.edit');
+
+    Route::get('puntosdeencuentros/{puntodeencuentro}/edit' , 'PuntoDeEncuentroController@edit')->name('puntosdeencuentros.edit')
+        ->middleware('can:puntosdeencuentros.edit');
+
+    Route::delete('puntosdeencuentros/eliminar/{puntodeencuentro}' , 'PuntoDeEncuentroController@destroy')->name('puntosdeencuentros.destroy')
+        ->middleware('can:puntosdeencuentros.destroy');
 
 
     //Usuarios

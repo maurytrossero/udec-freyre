@@ -43,13 +43,12 @@ class ProgramaController extends Controller
         $programa = new Programa();
         $programa->setNombre(request()->input('nombre'));
         $programa->setDescripcion(request()->input('descripcion'));
-        $programa->setImagen(request()->input('imagen'));
 
         $programa->save();
 
 
         return redirect('programas')
-            ->with('info', 'Programa registrado con éxito');;
+            ->with('info', 'Programa registrado con éxito');
     }
 
     public function edit(Programa $programa)
@@ -71,12 +70,11 @@ class ProgramaController extends Controller
 
         $programa->setNombre(request()->input('nombre'));
         $programa->setDescripcion(request()->input('descripcion'));
-        $programa->setImagen(request()->input('imagen'));
 
         $programa->update();
 
-        return redirect()->route('programas.show', ['programa' => $programa])
-            ->with('info', 'Programa actualizado con éxito');;
+        return redirect('programas')
+            ->with('info', 'Programa actualizado con éxito');
     }
 
     public function destroy(Programa $programa)

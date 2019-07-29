@@ -1,11 +1,11 @@
 @extends('layout')
 
-@section('title', "Crear Punto de Encuentro")
+@section('title', "Editar Punto de Encuentro")
 
 @section('content')
     @role('admin')
     <div class="card">
-        <h4 class="card-header"> Crear punto de encuentro</h4>
+        <h4 class="card-header"> Editar punto de encuentro</h4>
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">
@@ -14,13 +14,15 @@
             @endif
 
 
-            <form method="POST" action="{{ url('/puntosdeencuentros/crear') }}" enctype="multipart/form-data">
-                {!! csrf_field() !!}
+            <form method="POST" action="{{ url("/puntosdeencuentros/{$puntodeencuentro->id}")}}" enctype="multipart/form-data">
+
+                {{ method_field('PUT') }}
+                {{ csrf_field() }}
 
                 <div class="form-group">
                     <label for="nombre" >Nombre: </label>
                     <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Punto de encuentro en..."
-                           value="{{ old('nombre')}}">
+                           value="{{ old('nombre',$puntodeencuentro->getNombre())}}">
                 </div>
                 @if ($errors->has('nombre'))
                     <div class="alert alert-danger">
@@ -31,7 +33,7 @@
                 <div class="form-group">
                     <label for="descripcion" >Descripcion: </label>
                     <input type="text" name="descripcion" class="form-control" id="descripcion" placeholder="La actividad consiste en..."
-                           value="{{ old('descripcion')}}">
+                           value="{{ old('descripcion',$puntodeencuentro->getDescripcion())}}">
                 </div>
                 @if ($errors->has('descripcion'))
                     <div class="alert alert-danger">
@@ -42,7 +44,7 @@
                 <div class="form-group">
                     <label for="fecha_realización" >Fecha de Realizacion: </label>
                     <input type="date" name="fecha_realización" class="form-control" id="fecha_realización" placeholder="01/01/2019"
-                           value="{{ old('fecha_realización')}}">
+                           value="{{ old('fecha_realización',$puntodeencuentro->getFechaRealizacion())}}">
                 </div>
                 @if ($errors->has('fecha_realización'))
                     <div class="alert alert-danger">
@@ -54,7 +56,7 @@
                 <div class="form-group">
                     <label for="lugar" >Lugar: </label>
                     <input type="text" name="lugar" class="form-control" id="lugar" placeholder=""
-                           value="{{ old('lugar')}}">
+                           value="{{ old('lugar',$puntodeencuentro->getLugar())}}">
                 </div>
                 @if ($errors->has('lugar'))
                     <div class="alert alert-danger">
@@ -72,8 +74,7 @@
                     </div>
                 @endif
 
-
-                <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Crear punto de encuentro</button>
+                <button type="submit" class="btn-primary"> <span class="oi oi-dashboard"></span>   Actualizar punto de encuentro</button>
                 <a href="{{ route('puntosdeencuentros.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
         </div>

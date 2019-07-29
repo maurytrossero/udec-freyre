@@ -10,7 +10,7 @@ class ProgramaController extends Controller
     public function index()
     {
 
-        $programas = Programa::all();
+        $programas = Programa::orderBy('nombre', 'asc')->get();
         $title= 'Listado de programas';
 
         return view('programas.index', compact('title', 'programas'));

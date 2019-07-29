@@ -94,6 +94,13 @@ class Actividad extends Model
         $this->tipo_actividad_id = $tipo_actividad_id;
     }
 
+    public function getImagen() {
+        return $this->imagen;
+    }
+
+    public function setImagen($imagen) {
+        $this->imagen = $imagen;
+    }
 
     //RELACIÓN BASE DE DATOS
     public function users()

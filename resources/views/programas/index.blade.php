@@ -10,7 +10,7 @@
                 @role('admin')
                     @can('programas.create')
                         <a href="{{ route('programas.create') }}" class="btn btn-primary btn-block">
-                            <span class="oi oi-dashboard"></span> Crear Nuevo Programa</a>
+                            <span class="oi oi-dashboard"></span> Crear un Nuevo Programa</a>
                     @endcan
                 @endrole
             </div>

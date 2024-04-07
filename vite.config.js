@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        // Configuración de salida de construcción
+        outDir: 'public', // Nombre del directorio de salida (debería ser 'public')
+      },
 });

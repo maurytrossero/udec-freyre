@@ -1,15 +1,17 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PuntoDeEncuentroController;
+use App\Http\Controllers\ProgramaController;
+use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -17,65 +19,59 @@ Route::get('/', function () {
 
 
 //RUTAS DE USUARIOS
-/*
-Route::get('/usuarios','UserController@index')
-    ->name('users');
 
-Route::get('/usuarios/{id}','UserController@show')
-    ->where('id', '[0-9]+')
-    ->name('users.show');
-*/
+/*
 Route::get('/usuarios/nuevo','UserController@create')
-    ->name('users.create');
+    ->name('users.create');*/
+/*    
+Route::get('/user', [UserController::class, 'create'])
+    ->name('users.create');*/
 
-Route::post('/usuarios/crear', 'UserController@store');
+//Route::post('/usuarios/crear', 'UserController@store');
 /*
-Route::get('/usuarios/{user}/editar','UserController@edit')
-    ->name('users.edit');
+Route::post('/user/crear', [UserController::class, 'store'])
+    ->name('users.store');*/
 
-Route::put('/usuarios/{user}', 'UserController@update');
+Route::controller(UserController::class)->group(function () {
+    Route::get('/usuarios/nuevo', 'create')->name('users.create');
+    Route::post('/usuarios/crear', 'store');
+});
 
-Route::delete('/usuarios/{user}', 'UserController@destroy')
-    ->name('users.destroy');
-*/
 
 //RUTAS DE ACTIVIDADES
-
-    Route::get('actividades/' , 'ActividadController@index')
-        ->name('actividades.index');
 /*
-Route::get('/actividades/{id}','ActividadController@show')
-    ->where('id', '[0-9]+')
-    ->name('actividades.show');
+Route::get('actividades/' , 'ActividadController@index')
+    ->name('actividades.index');
 
-Route::get('/actividades/nuevo','ActividadController@create')
-    ->name('actividades.create');
-
-Route::post('/actividades/crear', 'ActividadController@store');
-
-Route::get('/actividades/{actividad}/editar','ActividadController@edit')
-    ->name('actividades.edit');
-
-Route::put('/actividades/{actividad}', 'ActividadController@update');
-
-Route::delete('/actividades/{actividad}', 'ActividadController@destroy')
-    ->name('actividades.destroy');
 */
+Route::controller(ActividadController::class)->group(function () {
+    Route::get('/actividades', 'index')->name('actividades.index');
+});
 
 //RUTAS DE PROGRAMAS
+/*
 Route::get('programas/' , 'ProgramaController@index')
-    ->name('programas.index');
+    ->name('programas.index');*/
+Route::controller(ProgramaController::class)->group(function () {
+    Route::get('/programas', 'index')->name('programas.index');
+});
 
 //RUTAS DE PUNTOS DE ENCUENTROS
-
+/*
 Route::get('puntosdeencuentros/' , 'PuntoDeEncuentroController@index')
     ->name('puntosdeencuentros.index');
+*/
+Route::controller(PuntoDeEncuentroController::class)->group(function () {
+    Route::get('/puntosdeencuentros', 'index')->name('puntosdeencuentros.index');
+});
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/home', 'index')->name('home');
+});
 
 Route::middleware(['auth'])->group(function() {
     //Roles
@@ -214,10 +210,6 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('inscripciones/{actividad}/nuevo' , 'InscripcionController@create')->name('inscripciones.create')
         ->middleware('can:inscripciones.create');
-
-/*
-    Route::get('inscripciones/{inscripcion}' , 'InscripcionController@show')->name('inscripciones.show')
-        ->middleware('can:inscripciones.show');*/
 
     Route::delete('inscripciones/eliminar/{inscripcion}' , 'InscripcionController@destroy')->name('inscripciones.destroy')
         ->middleware('can:inscripciones.destroy');

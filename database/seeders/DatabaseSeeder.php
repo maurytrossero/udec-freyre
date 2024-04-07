@@ -1,7 +1,13 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\User;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; // Asegúrate de importar DB aquí
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,9 +29,10 @@ class DatabaseSeeder extends Seeder
             'puntos_de_encuentros',
         ]);
 
+
         //$this->call(PermissionsTableSeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(DocentesSeeder::class);
+        //$this->call(UserSeeder::class);
+        //$this->call(DocentesSeeder::class);
         $this->call(TiposActividadesSeeder::class);
         $this->call(ActividadesSeeder::class);
         $this->call(ProgramaSeeder::class);
@@ -41,11 +48,7 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
             DB::statement('SET FOREIGN_KEY_CHECKS = 1');
             */
-
-            DB::statement("TRUNCATE TABLE {$table} RESTART IDENTITY CASCADE");
-
-
-
+            DB::table('users')->delete();
         }
 
     }

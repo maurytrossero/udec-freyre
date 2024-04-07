@@ -1,7 +1,10 @@
 <?php
+namespace Database\Seeders;
 
-use App\Rol2;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Rol2;
 
 class Roles2Seeder extends Seeder
 {

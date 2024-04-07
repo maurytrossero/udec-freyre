@@ -1,23 +1,19 @@
 <?php
 
-use App\Rol2;
-use App\User;
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Role;
-
-use Illuminate\Support\Facades\DB;
 
 
 class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-
         Role::create([
             'name' => 'Admin',
             'slug' => 'admin',
@@ -84,3 +80,7 @@ class UserSeeder extends Seeder
 
     }
 }
+
+
+
+

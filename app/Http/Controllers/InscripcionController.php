@@ -15,7 +15,7 @@ class InscripcionController extends Controller
 {
     public function index()
     {
-        if(Auth::check()=='true')
+        if(Auth::check())
         {
             $usuario_logueado = auth()->user();
             $actividades = $usuario_logueado->actividades()->get();
@@ -56,7 +56,7 @@ class InscripcionController extends Controller
 
         $actividad = Actividad::findOrFail($request->input('actividad'));
 
-        if(Auth::check()=='true')
+        if(Auth::check())
         {
             $usuario_logueado = auth()->user();
 
@@ -81,7 +81,7 @@ class InscripcionController extends Controller
     public function destroy($id)
     {
 
-        if(Auth::check()=='true')
+        if(Auth::check())
         {
             $usuario_logueado = auth()->user();
 

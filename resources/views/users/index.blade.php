@@ -3,7 +3,7 @@
 @section('title', 'Usuarios')
 
 @section('content')
-@role('admin')
+
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
             <div class="d-flex justify-content-between align-items-end mb-2">
@@ -34,7 +34,8 @@
                         @foreach($users as $user)
                             <tr>
                                 <th scope="row">{{ $user->id }}</th>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->name  }}        
+                                </td>
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @can('users.destroy')
@@ -63,7 +64,7 @@
     @else
         <p>No hay usuarios Registrados</p>
     @endif
-@endrole
+
 @endsection
 
 @section('sidebar')

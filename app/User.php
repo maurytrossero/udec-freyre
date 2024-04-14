@@ -3,13 +3,16 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Caffeinated\Shinobi\Concerns\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Actividad;
+use Spatie\Permission\Traits\HasRoles;
+
 
 class User extends Authenticatable
 {
-    use Notifiable, HasRolesAndPermissions;
+    use Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -41,7 +44,12 @@ class User extends Authenticatable
     public function actividades()
     {
         return $this->BelongsToMany(Actividad::class, 'inscripciones')
-            ->withPivot('fecha_inscripcion','id');;
+            ->withPivot('fecha_inscripcion','id');
     }
+/*
+    public function roles(){
+        $roles = $user->getRoleNames();
+        return $roles;
+    }*/
 
 }

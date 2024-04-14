@@ -12,7 +12,7 @@ class DocenteController extends Controller
     {
         $docentes = Docente::all();
         $title= 'Listado de docentes';
-
+        //dd($docentes);
         return view('docentes.index', compact('title', 'docentes'));
     }
 

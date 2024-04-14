@@ -21,6 +21,5 @@ class DocentesSeeder extends Seeder
             'telefono'=>'3562515307',
         ]);
 
-        factory(\App\Docente::class,5)->create();
     }
 }

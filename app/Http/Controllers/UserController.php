@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Caffeinated\Shinobi\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -13,7 +14,7 @@ class UserController extends Controller
     {
         $users = User::all();
         $title= 'Listado de usuarios';
-
+        //dd('llegamos al listado de usuarios desde el conteoller', $users);
        return view('users.index', compact('title', 'users'));
     }
 
@@ -21,8 +22,10 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $roles = $user->Roles()->get();
-
+        //$roles = $user->Roles()->get();
+        $roles = $user->getRoleNames(); // Obtener los nombres de los roles del usuario
+        //dd($roles);
+        
         return view('users.show')
             ->with('user' , $user)
             ->with('roles', $roles);
@@ -95,14 +98,15 @@ class UserController extends Controller
             unset($data['password']);
         }
 
-        $roles = request()->input('select_rol_id');
+        $ids= request()->input('select_rol_id');
 
-        if($roles != null)
+        if($ids != null)
         {
-            foreach ($roles as $role)
+            foreach ($ids as $id)
             {
-                //dd($role);
-                $user->Roles()->syncWithoutDetaching([$role]);
+                $role = Role::find($id);
+                //dd($role->name);
+                $user->assignRole($role);
             }
 
         }
@@ -165,7 +169,7 @@ class UserController extends Controller
 
     public function showPerfil(User $user)
     {
-        //dd($user);
+        dd($user);
 
         $roles = $user->Roles()->get();
 

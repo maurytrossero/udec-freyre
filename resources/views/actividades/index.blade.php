@@ -7,11 +7,11 @@
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
 
             <div class="d-flex justify-content-between align-items-end mb-2">
-                @role('admin')
+
                     @can('actividades.create')
                         <a href="{{ route('actividades.create') }}" class="btn btn-primary btn-block">  <span class="oi oi-dashboard"></span> Crear Nueva Actividad</a>
                     @endcan
-                @endrole
+
             </div>
         </div>
     </div>

@@ -7,13 +7,13 @@
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
 
             <div class="d-flex justify-content-between align-items-end mb-2">
-                @role('admin')
+
                     @can('puntosdeencuentros.create')
                         <a href="{{ route('puntosdeencuentros.create') }}"
                            class="btn btn-primary btn-block">
                             <span class="oi oi-dashboard"></span> Crear nuevo Punto de Encuentro</a>
                     @endcan
-                @endrole
+
             </div>
         </div>
     </div>
@@ -78,18 +78,18 @@
 
                     <div>
 
-                        @role('admin')
+
                         <a href="{{ route('puntosdeencuentros.edit',  $puntodeencuentro) }}" class="btn btn-link">
                             <span class="oi oi-pencil"></span> Editar Punto de Encuentro </a>
-                        @endrole
 
-                        @role('admin')
+
+
                         <form action="{{ route('puntosdeencuentros.destroy',  $puntodeencuentro) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Punto de Encuentro</span> </button>
                         </form>
-                        @endrole
+
                     </div>
                     @endforeach
 

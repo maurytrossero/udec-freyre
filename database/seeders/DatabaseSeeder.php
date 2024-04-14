@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //se eliminan las tablas antes de ejecutar los seed para evitar la duplicacion de seeds
         $this->TruncateTables([
             'users',
             'permissions',
@@ -28,11 +29,9 @@ class DatabaseSeeder extends Seeder
             'programas',
             'puntos_de_encuentros',
         ]);
-
-
-        //$this->call(PermissionsTableSeeder::class);
-        //$this->call(UserSeeder::class);
-        //$this->call(DocentesSeeder::class);
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(DocentesSeeder::class);
         $this->call(TiposActividadesSeeder::class);
         $this->call(ActividadesSeeder::class);
         $this->call(ProgramaSeeder::class);
@@ -44,9 +43,9 @@ class DatabaseSeeder extends Seeder
         foreach ($tables as $table)
         {
             /*
-            DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-            DB::table($table)->truncate();
-            DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+            DB::statement('SET FOREIGN_KEY_CHECKS = 0');// se desactiva la revision de claves foraneas para poder eliminar las tablas
+            DB::table($table)->truncate();//se eliminan las tablas
+            DB::statement('SET FOREIGN_KEY_CHECKS = 1');//se reactiva la revision de claves foraneas
             */
             DB::table('users')->delete();
         }

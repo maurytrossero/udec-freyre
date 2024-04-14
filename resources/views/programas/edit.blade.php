@@ -3,7 +3,7 @@
 @section('title', "Editar Programa")
 
 @section('content')
-    @role('admin')
+
     <div class="card">
         <h4 class="card-header"> Editar programa</h4>
         <div class="card-body">
@@ -46,8 +46,7 @@
                 <a href="{{ route('programas.index') }}" class="btn btn-link"> <span class="oi oi-action-undo"></span>   Regresar </a>
             </form>
         </div>
-    </div>
-    @endrole
+
 
 
 @endsection

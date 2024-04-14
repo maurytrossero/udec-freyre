@@ -3,7 +3,7 @@
 @section('title', "Docente {$role->id}")
 
 @section('content')
-@role('admin')
+
     <div class="card">
         <h4 class="card-header"> Detalles de Role</h4>
         <div class="card-body">
@@ -61,5 +61,5 @@
             </div>
         </div>
     </div>
-@endrole
+
 @endsection

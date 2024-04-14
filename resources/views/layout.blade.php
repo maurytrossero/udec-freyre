@@ -92,17 +92,17 @@
                         @can('inscripciones.index')
                             <li class="main_nav_item"><a href="{{ url ('/inscripciones/')}}">Inscripciones</a></li>
                         @endcan
-                        @role('admin')
+
+                        
                         @can('users.index')
                             <li class="main_nav_item"><a href="{{ url ('/usuarios/')}}">Usuarios</a></li>
                         @endcan
-                        @endrole
 
-                        @role('admin')
+                        
                         @can('roles.index')
                             <li class="main_nav_item"><a href="{{ url ('/roles/')}}">Roles</a></li>
                         @endcan
-                        @endrole
+                                             
 
                         <li class="main_nav_item"><a href="{{ url ('/programas/')}}">Programas</a></li>
 
@@ -328,16 +328,34 @@
             </div>
     </main>
 
+<!-- Actividades -->
+    <div class="events page_section">
+        <div class="container">
+
+            <div class="row">
+                <div class="col">
+                    <div class="section_title text-center">
+                        <h1>
+                            <a href="{{ route('actividades.index') }}">Actividades</a>
+
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
     <!-- Programas -->
 
     <div class="services page_section">
-
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="section_title text-center">
                         <h1>
-                            <a href="{{ url ('/programas/')}}">Programas</a>
+                            <a href="{{ route('programas.index') }}">Programas</a>
                         </h1>
                     </div>
                 </div>
@@ -349,12 +367,11 @@
 
     <div class="events page_section">
         <div class="container">
-
             <div class="row">
                 <div class="col">
                     <div class="section_title text-center">
                         <h1>
-                            <a href="{{ url ('/puntosdeencuentros/')}}">Puntos de encuentros</a>
+                            <a href="{{ route('puntosdeencuentros.index') }}">Puntos de encuentros</a>
                         </h1>
                     </div>
                 </div>

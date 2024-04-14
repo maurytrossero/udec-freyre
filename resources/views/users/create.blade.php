@@ -3,7 +3,7 @@
 @section('title', "Crear Usuario")
 
 @section('content')
-@role('admin')
+
     <div class="card">
         <h4 class="card-header"> Crear Usuario</h4>
         <div class="card-body">
@@ -54,5 +54,5 @@
             </form>
         </div>
     </div>
-@endrole
+
 @endsection

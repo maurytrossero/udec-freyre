@@ -57,9 +57,9 @@
                         </table>
 
                         <a href="{{ url ('/docentes/')}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Regresar </a>
-                        @role('admin')
+
                             <a href="{{ route('docentes.edit',$docente)}}" class="btn btn-primary"> <span class="oi oi-action-undo"></span>  Editar detalles </a>
-                        @endrole
+
                     </div>
                 </div>
             </div>

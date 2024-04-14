@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Caffeinated\Shinobi\Models\Permission;
-use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -36,17 +36,13 @@ class RoleController extends Controller
     {
         $data = request()->validate([
             'name' => 'required',
-            'description' => 'required',
         ],
             [
-                'name.required' => 'El nombre es obligatorio',
-                'description.required' => 'La descripción es requerida',
+                'name.required' => 'El nombre es obligatorio'
             ]);
 
         $role = new Role();
         $role->name = $data['name'];
-        $role->slug = strtolower($data['name']);
-        $role->description = $data['description'];
 
         $role->save();
         return redirect()->route('roles.index')
@@ -62,27 +58,20 @@ class RoleController extends Controller
     public function update(Role $role)
     {
         $data = request()->validate([
-                'name' => 'required',
-                'description' => 'required',
+                'name' => 'required'
+
             ],
                 [
-                    'name.required' => 'El nombre es obligatorio',
-                    'description.required' => 'La descripción es requerida',
+                    'name.required' => 'El nombre es obligatorio'
                 ]);
 
         $role->name = $data['name'];
-        $role->slug = strtolower($data['name']);
-        $role->description = $data['description'];
-
 
         $permiso_especial = request()->get('select_special_permission_id');
 
         if($permiso_especial != 'null')
         {
-            //dd($permiso_especial);
-
             $role->special = $permiso_especial;
-
         }
 
         $role->update($data);

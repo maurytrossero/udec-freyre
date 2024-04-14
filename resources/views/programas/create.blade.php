@@ -3,7 +3,7 @@
 @section('title', "Crear Programa")
 
 @section('content')
-    @role('admin')
+
     <div class="card">
         <h4 class="card-header"> Crear programa nuevo</h4>
         <div class="card-body">
@@ -12,7 +12,6 @@
                     <h4> <span class="oi oi-warning"></span>  Por favor, revisa los siguientes errores</h4>
                 </div>
             @endif
-
 
             <form method="POST" action="{{ url('/programas/crear') }}" enctype="multipart/form-data">
                 {!! csrf_field() !!}
@@ -45,7 +44,7 @@
             </form>
         </div>
     </div>
-    @endrole
+
 
 
 @endsection

@@ -9,9 +9,9 @@
                 <h4 class="pb-1">{{ $title }}</h4>
             </div>
             <div class="d-flex justify-content-between align-items-end mb-2">
-                @role('admin')
+
                     <a href="{{ route('docentes.create') }}" class="btn btn-primary btn-block"> <span class="oi oi-people"></span>   Nuevo Docente</a>
-                @endrole
+
             </div>
         </div>
     </div>
@@ -38,21 +38,21 @@
                                 <td>{{ $docente->getNombre() }}</td>
                                 <td>{{ $docente->getDni() }}</td>
                                 <td>
-                                    @role('admin')
+
                                         <form action="{{ route('docentes.destroy',  $docente) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-link"> <span class="oi oi-trash"></span> </button>
                                         </form>
-                                    @endrole
+
 
                                     @can('docentes.show')
                                         <a href="{{ route('docentes.show', $docente) }}" class="btn btn-link"> <span class="oi oi-eye"></span> </a>
                                     @endcan
 
-                                    @role('admin')
+
                                         <a href="{{ route('docentes.edit',  $docente) }}" class="btn btn-link"> <span class="oi oi-pencil"></span> </a>
-                                    @endrole
+
 
                                 </td>
                             </tr>

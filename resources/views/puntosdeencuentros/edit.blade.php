@@ -3,7 +3,7 @@
 @section('title', "Editar Punto de Encuentro")
 
 @section('content')
-    @role('admin')
+
     <div class="card">
         <h4 class="card-header"> Editar punto de encuentro</h4>
         <div class="card-body">
@@ -79,7 +79,7 @@
             </form>
         </div>
     </div>
-    @endrole
+
 
 
 @endsection

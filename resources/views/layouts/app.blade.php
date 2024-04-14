@@ -39,13 +39,13 @@
                             <a class="nav-link" href="{{ route ('actividades.index') }}">Actividades</a>
                         </li>
 
-                        @role('admin')
+
                         @can('users.index')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route ('users.index') }}">Usuarios</a>
                             </li>
                         @endcan
-                        @endrole
+
 
                         @can('docentes.index')
                             <li class="nav-item">
@@ -59,13 +59,13 @@
                             </li>
                         @endcan
 
-                        @role('admin')
+
                             @can('roles.index')
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route ('roles.index') }}">Roles</a>
                                 </li>
                             @endcan
-                        @endrole
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->

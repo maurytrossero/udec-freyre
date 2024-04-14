@@ -3,7 +3,7 @@
 @section('title', "Usuario {$user->id}")
 
 @section('content')
-@role('admin')
+
     <div class="card">
         <h4 class="card-header"> Detalles de Usuario</h4>
         <div class="card-body">
@@ -51,7 +51,7 @@
                                 <th scope="col"> <span class="oi oi-person"></span>  Roles Asignados</th>
                                 <td>
                                     @foreach($roles as $rol)
-                                        <li>{{ $rol->name}}</li>
+                                        <li>{{ $rol}}</li>
                                     @endforeach
                                 </td>
                             </tr>
@@ -67,6 +67,6 @@
             </div>
         </div>
     </div>
-@endrole
+
 
 @endsection

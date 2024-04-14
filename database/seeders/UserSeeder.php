@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Caffeinated\Shinobi\Models\Role;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\User;
 
 
 class UserSeeder extends Seeder
@@ -14,26 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::create([
-            'name' => 'Admin',
-            'slug' => 'admin',
-            'special' => 'all-access',
-            'description' => 'Rol Administrador',
-        ]);
 
-        Role::create([
-            'name' => 'Alumno',
-            'slug' => 'alumno',
-            'description' => 'Rol Alumno',
-        ]);
-
-        Role::create([
-            'name' => 'Docente',
-            'slug' => 'docente',
-            'description' => 'Rol Docente',
-        ]);
-
-        $rol_user = Role::where('name','Alumno')->first();
         $user = new User();
         $user->name = "Mauricio Trossero";
         $user->email = "maurytrossero@gmail.com";
@@ -42,10 +25,9 @@ class UserSeeder extends Seeder
         $user->direccion = "San Martin 928";
         $user->telefono = "3564607490";
         $user->save();
-        $user->Roles()->attach($rol_user);
+        $user->assignRole('Docente');
 
 
-        $rol_user = Role::where('name','Admin')->first();
         $user = new User();
         $user->name = "Administrador";
         $user->email = "administrador@admin.com";
@@ -54,9 +36,8 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->Roles()->attach($rol_user);
+        $user->assignRole('Admin');
 
-        $rol_user = Role::where('name','Alumno')->first();
         $user = new User();
         $user->name = "MT Producciones";
         $user->email = "mtproduccioneshd@gmail.com";
@@ -65,9 +46,8 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->Roles()->attach($rol_user);
+        $user->assignRole('Alumno');
 
-        $rol_user = Role::where('name','Admin')->first();
         $user = new User();
         $user->name = "Emiliano Gorgerino";
         $user->email = "emilianogorgerino@gmail.com";
@@ -76,8 +56,7 @@ class UserSeeder extends Seeder
         $user->direccion = "";
         $user->telefono = "3564607490";
         $user->save();
-        $user->Roles()->attach($rol_user);
-
+        $user->assignRole('Admin');
     }
 }
 

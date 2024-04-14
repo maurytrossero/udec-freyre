@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title', 'Roles')
-@role('admin')
+
 @section('content')
     <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">
@@ -72,7 +72,7 @@
     @endif
 @endsection
 
-@endrole
+
 @section('sidebar')
     @parent
 

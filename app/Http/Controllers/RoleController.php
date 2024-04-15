@@ -13,6 +13,8 @@ class RoleController extends Controller
         $roles = Role::all();
         $title= 'Listado de roles';
 
+       // dd($roles);
+
         return view('roles.index', compact('title', 'roles'));
     }
 

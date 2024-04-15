@@ -10,6 +10,7 @@ use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\RoleController;
 
 
 Route::get('/', function () {

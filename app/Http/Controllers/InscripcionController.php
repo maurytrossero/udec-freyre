@@ -19,8 +19,9 @@ class InscripcionController extends Controller
     {
         if(Auth::check())
         {
-            $usuario_logueado = auth()->user();
-            //dd($usuario_logueado); // Agrega este dd() para ver qué contiene $usuario_logueado
+            $id = auth()->user()->id;
+
+            $usuario_logueado = User::findOrFail($id);//obligamos a usar el modelo user en cuestion, y no el que trae laravel por defecto
 
             $actividades = $usuario_logueado->actividades;
 
@@ -62,18 +63,25 @@ class InscripcionController extends Controller
 
         $actividad = Actividad::findOrFail($request->input('actividad'));
 
-        //dd($actividad);
+        
 
-        if(Auth::check())
-        {
-            $usuario_logueado = auth()->user();
+        if(Auth::check()) {
+            $id = auth()->user()->id;
 
-            $usuario_logueado->actividades()->syncWithoutDetaching([$actividad->getId() => ['fecha_inscripcion' => $fecha_actual]]);
-            
-
-            return redirect('inscripciones')
-                ->with('info', 'Inscripto a la actividad exitosamente');;
+            $usuario_logueado = User::findOrFail($id);
+        
+            // Verifica si el usuario ya está inscrito en la actividad
+            if(!$usuario_logueado->actividades->contains($actividad->id)) {
+                // Si no está inscrito, crea una nueva inscripción
+                $usuario_logueado->actividades()->attach($actividad->id, ['fecha_inscripcion' => $fecha_actual]);
+            } else {
+                // Si ya está inscrito, actualiza la fecha de inscripción
+                $usuario_logueado->actividades()->updateExistingPivot($actividad->id, ['fecha_inscripcion' => $fecha_actual]);
+            }
+        
+            return redirect('inscripciones')->with('info', 'Inscripto a la actividad exitosamente');
         }
+        
 
         else
         {
@@ -88,20 +96,21 @@ class InscripcionController extends Controller
 
     public function destroy($id)
     {
-
         if(Auth::check())
         {
-            $usuario_logueado = auth()->user();
-
+            $idUser = auth()->user()->id;
+            $usuario_logueado = User::findOrFail($idUser);
+    
+            // Aquí, $id es el id de la actividad que se desea eliminar de las inscripciones del usuario
             $usuario_logueado->actividades()->detach($id);
-
+    
             return redirect()->route('inscripciones.index')
-                ->with('info', 'Se dio de baja a la inscripción con éxito');;
+                ->with('info', 'Se dio de baja a la inscripción con éxito');
         }
         else
         {
             return view('home');
         }
-
     }
+    
 }

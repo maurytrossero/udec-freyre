@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Actividad extends Model
 {
@@ -103,12 +105,12 @@ class Actividad extends Model
     }
 
     //RELACIÓN BASE DE DATOS
-    public function users()
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'inscripciones');
     }
 
-    public function docentes()
+    public function docentes(): BelongsToMany
     {
         return $this->belongsToMany(Docente::class);
     }

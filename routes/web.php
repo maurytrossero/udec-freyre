@@ -152,7 +152,7 @@ Route::middleware(['auth'])->group(function() {
         ->middleware('can:users.perfil-edit');
 
     Route::put('usuarios/perfil-update/{user}' , [UserController::class, 'updatePerfil'])->name('users.perfil-update')
-        ->middleware('can:users.-perfil-update');
+        ->middleware('can:users.perfil-update');
 
     Route::get('usuarios/perfil/{user}' , [UserController::class, 'showPerfil'])->name('users.perfil-show')
         ->middleware('can:users.perfil-show');
@@ -182,7 +182,7 @@ Route::middleware(['auth'])->group(function() {
 
     //Inscripciones
     //dd('Estoy aquí rutas incripciones');
-    Route::post('inscripciones/crear' , [InscripcionController::class, 'confirmar'])->name('inscripciones.confirmar')
+    Route::post('inscripciones/crear' , [InscripcionController::class, 'store'])->name('inscripciones.confirmar')
         ->middleware('can:inscripciones.confirmar');
 
     Route::get('inscripciones/' , [InscripcionController::class, 'index'])->name('inscripciones.index')

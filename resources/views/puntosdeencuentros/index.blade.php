@@ -78,18 +78,18 @@
 
                     <div>
 
-
+                    @can('puntosdeencuentros.edit')
                         <a href="{{ route('puntosdeencuentros.edit',  $puntodeencuentro) }}" class="btn btn-link">
                             <span class="oi oi-pencil"></span> Editar Punto de Encuentro </a>
+                    @endcan
 
-
-
+                    @can('puntosdeencuentros.destroy')
                         <form action="{{ route('puntosdeencuentros.destroy',  $puntodeencuentro) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Punto de Encuentro</span> </button>
                         </form>
-
+                    @endcan
                     </div>
                     @endforeach
 

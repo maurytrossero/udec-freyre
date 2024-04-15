@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
+
 class InscripcionController extends Controller
 {
     public function index()
@@ -18,7 +20,11 @@ class InscripcionController extends Controller
         if(Auth::check())
         {
             $usuario_logueado = auth()->user();
-            $actividades = $usuario_logueado->actividades()->get();
+            //dd($usuario_logueado); // Agrega este dd() para ver qué contiene $usuario_logueado
+
+            $actividades = $usuario_logueado->actividades;
+
+            //dd($actividades);
             $title = 'Listado de actividades inscriptas';
 
             return view('inscripciones.index')
@@ -56,11 +62,14 @@ class InscripcionController extends Controller
 
         $actividad = Actividad::findOrFail($request->input('actividad'));
 
+        //dd($actividad);
+
         if(Auth::check())
         {
             $usuario_logueado = auth()->user();
 
-            $usuario_logueado->actividades()->syncWithoutDetaching([$actividad->getId(),['fecha_inscripcion' => $fecha_actual]]);
+            $usuario_logueado->actividades()->syncWithoutDetaching([$actividad->getId() => ['fecha_inscripcion' => $fecha_actual]]);
+            
 
             return redirect('inscripciones')
                 ->with('info', 'Inscripto a la actividad exitosamente');;
@@ -68,7 +77,6 @@ class InscripcionController extends Controller
 
         else
         {
-            //$usuario_logueado->actividades()->attach($actividad->getId(),['fecha_inscripcion' => $fecha_actual]);
 
             return view('home');
 

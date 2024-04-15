@@ -23,110 +23,85 @@
 <body>
 
 <div class="super_container">
+   
 
-    <!-- Header -->
-    <header class="header d-flex flex-row">
-        <div class="header_content d-flex flex-row align-items-center">
-            <!-- Logo -->
-            <div class="logo_container">
-                <div class="logo">
-                    <img src="{{asset('images/logo.png')}}" alt="">
-                    <span></span>
-                </div>
-            </div>
-
-            <!-- Main Navigation -->
-            <nav class="main_nav_container">
-                <div class="main_nav">
-
-                    <ul class="main_nav_list">
-
-                        @guest
-                            <li class="main_nav_item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Acceder') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="main_nav_item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="main_nav_item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                    <a class="dropdown-item" href="{{ route('users.perfil-show',Auth::user()->id) }}">
-                                        Mi Perfil
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('users.perfil-show',Auth::user()->id) }}" method="POST"
-                                          style="display: none;">
-                                        @csrf
-                                    </form>
-
-                                </div>
-                            </li>
-                        @endguest
-
-
-                        <li class="main_nav_item"><a href="{{ url ('/actividades/')}}">Actividades</a></li>
-
-                        @can('docentes.index')
-                            <li class="main_nav_item"><a href="{{ url ('/docentes/')}}">Docentes</a></li>
-                        @endcan
-
-                        @can('inscripciones.index')
-                            <li class="main_nav_item"><a href="{{ url ('/inscripciones/')}}">Inscripciones</a></li>
-                        @endcan
-
-                        
-                        @can('users.index')
-                            <li class="main_nav_item"><a href="{{ url ('/usuarios/')}}">Usuarios</a></li>
-                        @endcan
-
-                        
-                        @can('roles.index')
-                            <li class="main_nav_item"><a href="{{ url ('/roles/')}}">Roles</a></li>
-                        @endcan
-                                             
-
-                        <li class="main_nav_item"><a href="{{ url ('/programas/')}}">Programas</a></li>
-
-                        <li class="main_nav_item"><a href="{{ url ('/puntosdeencuentros/')}}">Puntos de Encuentros</a></li>
-
-                    </ul>
-
-                </div>
-            </nav>
+<!-- Header -->
+<header class="header d-flex flex-row justify-content-between align-items-center">
+    <!-- Logo -->
+    <div class="logo_container mr-auto">
+        <div class="logo">
+            <img src="{{ asset('images/logo.png') }}" alt="">
+            <span></span>
         </div>
+    </div>
 
-        <!-- Main Navigation
-        <div class="header_side d-flex flex-row justify-content-center align-items-center">
-            <img src="images/phone-call.svg" alt="">
-            <span>+43 4566 7788 2457</span>
+    <!-- Main Navigation -->
+    <nav class="main_nav_container">
+        <div class="main_nav">
+            <ul class="main_nav_list d-flex flex-wrap justify-content-center align-items-center">
+                <!-- Aquí va el código para la autenticación y las opciones de navegación -->
+                @guest
+                    <li class="main_nav_item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Acceder') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="main_nav_item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrar') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="main_nav_item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Salir') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a class="dropdown-item" href="{{ route('users.perfil-show', Auth::user()->id) }}">
+                                Mi Perfil
+                            </a>
+                            <form id="logout-form" action="{{ route('users.perfil-show', Auth::user()->id) }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+                <!-- Opciones de navegación restantes -->
+                <li class="main_nav_item"><a href="{{ url('/actividades/') }}">Actividades</a></li>
+                @can('docentes.index')
+                    <li class="main_nav_item"><a href="{{ url('/docentes/') }}">Docentes</a></li>
+                @endcan
+                @can('inscripciones.index')
+                    <li class="main_nav_item"><a href="{{ url('/inscripciones/') }}">Inscripciones</a></li>
+                @endcan
+                @can('users.index')
+                    <li class="main_nav_item"><a href="{{ url('/usuarios/') }}">Usuarios</a></li>
+                @endcan
+                @can('roles.index')
+                    <li class="main_nav_item"><a href="{{ url('/roles/') }}">Roles</a></li>
+                @endcan
+                <li class="main_nav_item"><a href="{{ url('/programas/') }}">Programas</a></li>
+                <li class="main_nav_item"><a href="{{ url('/puntosdeencuentros/') }}">Puntos de Encuentros</a></li>
+            </ul>
         </div>
-        -->
+    </nav>
 
-        <!-- Hamburger -->
-        <div class="hamburger_container">
-            <i class="fas fa-bars trans_200"></i>
-        </div>
+    <!-- Hamburger -->
+    <div class="hamburger_container mr-auto">
+        <i class="fas fa-bars trans_200"></i>
+    </div>
+</header>
 
-    </header>
+
 
     <!-- Menu -->
     <div class="menu_container menu_mm">

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Actividad;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
 
 
 class User extends Authenticatable
@@ -41,15 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function actividades()
+    public function actividades(): BelongsToMany
     {
-        return $this->BelongsToMany(Actividad::class, 'inscripciones')
+        return $this->belongsToMany(Actividad::class, 'inscripciones')
             ->withPivot('fecha_inscripcion','id');
     }
-/*
-    public function roles(){
-        $roles = $user->getRoleNames();
-        return $roles;
-    }*/
+
 
 }

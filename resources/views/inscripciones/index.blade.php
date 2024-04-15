@@ -18,7 +18,7 @@
     </div>
 
 
-    @if($actividades->IsNotEmpty())
+    @if(!is_null($actividades) && $actividades->isNotEmpty())
 
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-12">

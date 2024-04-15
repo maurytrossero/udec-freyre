@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\User;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
@@ -169,7 +169,7 @@ class UserController extends Controller
 
     public function showPerfil(User $user)
     {
-        dd($user);
+        //dd($user);
 
         $roles = $user->Roles()->get();
 

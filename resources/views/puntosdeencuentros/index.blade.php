@@ -32,69 +32,76 @@
                     </div>
                 </div>
 
-                <div class="event_items">
-
+                <div> 
                     <!-- Event Item -->
                     @foreach($puntosdeencuentros as $puntodeencuentro)
-                    <div class="row event_item">
-                        <div class="col">
-                            <div class="row d-flex flex-row align-items-end">
 
-                                <div class="col-lg-2 order-lg-1 order-2">
-                                    <div class="event_date d-flex flex-column align-items-center justify-content-center">
-                                        <div class="event_day">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('d')}}</div>
-                                        <div class="event_month">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('m')}}</div>
+                    <!-- Añadido un borde amarillo al contenedor y márgenes -->
+                    <div class="event_items border border-warning p-3 mb-3">
+                        <div class="row event_item mb-3"> <!-- Añadido margen inferior entre elementos del bucle -->
+                            <div class="col">
+                                <div class="row d-flex flex-row align-items-end">
+                    
+                                    <div class="col-lg-2 order-lg-1 order-2">
+                                        <div class="event_date d-flex flex-column align-items-center justify-content-center">
+                                            <div class="event_day">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('d')}}</div>
+                                            <div class="event_month">{{ \Carbon\Carbon::parse($puntodeencuentro->getFechaRealizacion())->format('m')}}</div>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="col-lg-6 order-lg-2 order-3">
-                                    <div class="event_content">
-                                        <div class="event_name"><a class="trans_200" href="#">{{ $puntodeencuentro->getNombre()}}</a></div>
-                                        <div class="event_location">{{ $puntodeencuentro->getLugar()}}</div>
-                                        <p>{{ $puntodeencuentro->getDescripcion()}}</p>
+                    
+                                    <div class="col-lg-6 order-lg-2 order-3">
+                                        <div class="event_content">
+                                            <div class="event_name"><a class="trans_200" href="#">{{ $puntodeencuentro->getNombre()}}</a></div>
+                                            <div class="event_location">{{ $puntodeencuentro->getLugar()}}</div>
+                                            <p>{{ $puntodeencuentro->getDescripcion()}}</p>
+                                        </div>
                                     </div>
-                                </div>
-
-                                @if($puntodeencuentro->getImagen()==null)
-                                <div class="col-lg-4 order-lg-3 order-1">
-                                    <div class="event_image">
-                                        <img src="{{asset('images/event_1.jpg')}}" alt="https://unsplash.com/@theunsteady5">
+                    
+                                    @if($puntodeencuentro->getImagen()==null)
+                                    <div class="col-lg-4 order-lg-3 order-1">
+                                        <div class="event_image">
+                                            <img src="{{asset('images/event_1.jpg')}}" alt="https://unsplash.com/@theunsteady5">
+                                        </div>
                                     </div>
-                                </div>
-                                @else
+                                    @else
                                     <div class="col-lg-4 order-lg-3 order-1">
                                         <div class="event_image">
                                             <img src="imagenes/{{$puntodeencuentro->getImagen()}}" alt="https://unsplash.com/@theunsteady5">
                                         </div>
                                     </div>
-                                @endif
-
-
-
-
+                                    @endif
+                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="d-flex justify-content-center align-items-center flex-wrap"> <!-- Añadidas las clases 'align-items-center' y 'flex-wrap' para centrar y envolver los elementos -->
+                            <div class="mb-2 mr-2"> <!-- Añadido margen inferior y derecho para separar los botones -->
+                                @can('puntosdeencuentros.edit')
+                                <a href="{{ route('puntosdeencuentros.edit',  $puntodeencuentro) }}" class="btn btn-warning btn-sm">
+                                    <span class="oi oi-pencil"></span> Editar Punto de Encuentro
+                                </a>
+                                @endcan
+                            </div>
+                    
+                            <div class="mb-2"> <!-- Añadido margen inferior para separar los botones -->
+                                @can('puntosdeencuentros.destroy')
+                                <form action="{{ route('puntosdeencuentros.destroy',  $puntodeencuentro) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <span class="oi oi-trash"></span> Eliminar Punto de Encuentro
+                                    </button>
+                                </form>
+                                @endcan
                             </div>
                         </div>
                     </div>
 
-                    <div>
 
-                    @can('puntosdeencuentros.edit')
-                        <a href="{{ route('puntosdeencuentros.edit',  $puntodeencuentro) }}" class="btn btn-link">
-                            <span class="oi oi-pencil"></span> Editar Punto de Encuentro </a>
-                    @endcan
-
-                    @can('puntosdeencuentros.destroy')
-                        <form action="{{ route('puntosdeencuentros.destroy',  $puntodeencuentro) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button type="submit" class="btn btn-link"> <span class="oi oi-trash"> Eliminar Punto de Encuentro</span> </button>
-                        </form>
-                    @endcan
-                    </div>
                     @endforeach
-
-
                 </div>
+                
 
             </div>
         </div>

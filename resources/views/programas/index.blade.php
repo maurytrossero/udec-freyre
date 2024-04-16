@@ -37,22 +37,29 @@
                             <p>{{ $programa->getDescripcion()}}</p>
 
                             <div class="d-flex justify-content-center">
-                                @can('programas.edit')
-                                <a href="{{ route('programas.edit',  $programa) }}" class="btn btn-link mr-2">
-                                    <span class="oi oi-pencil"></span> Editar Programa
-                                </a>
-                                @endcan
-
-                                @can('programas.destroy')
-                                <form action="{{ route('programas.destroy',  $programa) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button type="submit" class="btn btn-link">
-                                        <span class="oi oi-trash"></span> Eliminar Programa
-                                    </button>
-                                </form>
-                                @endcan
+                                <div class="btn-group flex-wrap" role="group" aria-label="Acciones del Programa"> <!-- Agregada la clase 'flex-wrap' para envolver los botones si exceden el ancho del contenedor -->
+                                    @can('programas.edit')
+                                    <div class="mr-2 mb-2"> <!-- Agregado un div adicional para envolver el botón y añadir margen derecho y margen inferior -->
+                                        <a href="{{ route('programas.edit',  $programa) }}" class="btn btn-warning btn-sm">
+                                            <span class="oi oi-pencil"></span> Editar Programa
+                                        </a>
+                                    </div>
+                                    @endcan
+                            
+                                    @can('programas.destroy')
+                                    <div class="mb-2"> <!-- Agregado un div adicional para envolver el formulario y añadir margen inferior -->
+                                        <form action="{{ route('programas.destroy',  $programa) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <span class="oi oi-trash"></span> Eliminar Programa
+                                            </button>
+                                        </form>
+                                    </div>
+                                    @endcan
+                                </div>
                             </div>
+                            
                         </div>
                     </div>
                     @endforeach

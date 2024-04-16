@@ -3,9 +3,12 @@
 @section('title', "Docente {$docente->id}")
 
 @section('content')
+<div class="text-center mt-4 mb-4">
+    <h2 class="text-primary font-weight-bold">Detalles de Docente </h2>
+</div>
 
     <div class="card">
-        <h4 class="card-header"> Detalles de Docente</h4>
+   
         <div class="card-body">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

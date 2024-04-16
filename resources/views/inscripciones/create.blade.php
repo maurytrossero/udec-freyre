@@ -3,9 +3,12 @@
 @section('title', "Crear actividad")
 
 @section('content')
+<div class="text-center mt-4 mb-4">
+    <h2 class="text-primary font-weight-bold">Suscribirse a una actividad</h2>
+</div>
 
     <div class="card">
-        <h4 class="card-header"> Suscribirse a una actividad</h4>
+
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">

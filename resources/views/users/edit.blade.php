@@ -4,8 +4,12 @@
 
 @section('content')
 
+<div class="text-center mt-4 mb-4">
+    <h2 class="text-primary font-weight-bold">Editar Usuario</h2>
+</div>
+
     <div class="card">
-        <h4 class="card-header"> Editar Usuario</h4>
+
         <div class="card-body">
             @if($errors->any())
                 <div class="alert alert-danger">
